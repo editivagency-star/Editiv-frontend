@@ -4,92 +4,6 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaTiktok, FaYoutube 
 import { useCountUp } from "./ScrollAnimations";
 import "../styles/hero.css";
 
-/* ── Animated Social Network Graph (Canvas) ── */
-function SocialNetwork() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let animationId;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const particles = [];
-    const numParticles = 70; // Node count
-
-    for (let i = 0; i < numParticles; i++) {
-      particles.push({
-        x: Math.random() * canvas.offsetWidth,
-        y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2 + 1.5,
-      });
-    }
-
-    const draw = () => {
-      const W = canvas.offsetWidth;
-      const H = canvas.offsetHeight;
-      ctx.clearRect(0, 0, W, H);
-
-      for (let i = 0; i < numParticles; i++) {
-        let p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Bounce off walls
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
-
-        // Draw node
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 255, 136, 0.8)";
-        ctx.shadowColor = "rgba(0, 255, 136, 0.8)";
-        ctx.shadowBlur = 10;
-        ctx.fill();
-        ctx.shadowBlur = 0; // reset
-
-        // Draw connections
-        for (let j = i + 1; j < numParticles; j++) {
-          let p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          const maxDist = 140;
-          if (dist < maxDist) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 255, 136, ${0.25 * (1 - dist / maxDist)})`;
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="hero-network-canvas" />;
-}
 
 /* ── Floating Social Icons ── */
 function FloatingSocialIcons() {
@@ -168,11 +82,6 @@ export default function Hero() {
       {/* Floating social media icons */}
       <FloatingSocialIcons />
 
-      {/* Social Network Node Graphic */}
-      <div className="hero-network-wrap" aria-hidden="true">
-        <SocialNetwork />
-        <div className="network-glow" />
-      </div>
 
       {/* Abstract glow orbs */}
       <div className="hero-abstract" aria-hidden="true">

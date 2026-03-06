@@ -54,34 +54,6 @@
   }
 }
 
-/* ── 3D Social Network Graph Canvas ── */
-.hero-network-wrap {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 75%;
-  height: 65%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-network-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.network-glow {
-  position: absolute;
-  bottom: 10%;
-  right: 15%;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.12) 0%, transparent 65%);
-  filter: blur(40px);
-  pointer-events: none;
-}
 
 /* ── Abstract glow orbs ── */
 .hero-abstract {
@@ -454,11 +426,6 @@
     justify-content: center;
   }
 
-  .hero-network-wrap {
-    width: 90%;
-    height: 45%;
-    right: -10%;
-  }
 
   .hero-bottom-bar {
     flex-wrap: wrap;
@@ -503,8 +470,4 @@
     padding: 0;
   }
 
-  .hero-network-wrap {
-    width: 100%;
-    height: 40%;
-  }
 }
