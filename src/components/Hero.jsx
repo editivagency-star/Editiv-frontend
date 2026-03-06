@@ -1,11 +1,11 @@
-import "../styles/hero.css";
-import { FiPlay } from "react-icons/fi";
-import { FiArrowUpRight } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
+import { FiPlay, FiArrowUpRight, FiHeart, FiMessageCircle, FiShare2, FiThumbsUp } from "react-icons/fi";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaTiktok, FaYoutube } from "react-icons/fa";
 import { useCountUp } from "./ScrollAnimations";
+import "../styles/hero.css";
 
-/* ── Animated 3D Mesh Wave (Canvas) ── */
-function MeshWave() {
+/* ── Animated Social Network Graph (Canvas) ── */
+function SocialNetwork() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -13,7 +13,6 @@ function MeshWave() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     let animationId;
-    let time = 0;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
@@ -23,89 +22,61 @@ function MeshWave() {
     resize();
     window.addEventListener("resize", resize);
 
-    const cols = 50;
-    const rows = 30;
+    const particles = [];
+    const numParticles = 70; // Node count
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.offsetWidth,
+        y: Math.random() * canvas.offsetHeight,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        radius: Math.random() * 2 + 1.5,
+      });
+    }
 
     const draw = () => {
       const W = canvas.offsetWidth;
       const H = canvas.offsetHeight;
       ctx.clearRect(0, 0, W, H);
 
-      const spacingX = W / cols;
-      const spacingY = H / rows;
+      for (let i = 0; i < numParticles; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
 
-      // Build grid points
-      const points = [];
-      for (let r = 0; r < rows; r++) {
-        const row = [];
-        for (let c = 0; c < cols; c++) {
-          const x = c * spacingX;
-          const baseY = r * spacingY;
+        // Bounce off walls
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
 
-          // Wave displacement
-          const wave1 = Math.sin((c * 0.15) + time * 0.8) * 18;
-          const wave2 = Math.cos((r * 0.12) + time * 0.6) * 14;
-          const wave3 = Math.sin((c * 0.08 + r * 0.06) + time * 0.4) * 10;
-          const y = baseY + wave1 + wave2 + wave3;
+        // Draw node
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 255, 136, 0.8)";
+        ctx.shadowColor = "rgba(0, 255, 136, 0.8)";
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.shadowBlur = 0; // reset
 
-          // Depth factor for perspective
-          const depth = r / rows;
-          const perspY = H * 0.15 + (y - H * 0.15) * (0.3 + depth * 0.7);
-          const perspX = W * 0.5 + (x - W * 0.5) * (0.4 + depth * 0.6);
+        // Draw connections
+        for (let j = i + 1; j < numParticles; j++) {
+          let p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
-          row.push({ x: perspX, y: perspY, depth });
-        }
-        points.push(row);
-      }
-
-      // Draw wireframe
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const p = points[r][c];
-          const alpha = 0.08 + p.depth * 0.45;
-          const green = Math.floor(180 + p.depth * 75);
-
-          ctx.strokeStyle = `rgba(0, ${green}, 136, ${alpha})`;
-          ctx.lineWidth = 0.5 + p.depth * 0.8;
-
-          // Horizontal lines
-          if (c < cols - 1) {
-            const next = points[r][c + 1];
+          const maxDist = 140;
+          if (dist < maxDist) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
-            ctx.lineTo(next.x, next.y);
-            ctx.stroke();
-          }
-
-          // Vertical lines
-          if (r < rows - 1) {
-            const below = points[r + 1][c];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(below.x, below.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(0, 255, 136, ${0.25 * (1 - dist / maxDist)})`;
+            ctx.lineWidth = 1.2;
             ctx.stroke();
           }
         }
       }
 
-      // Draw bright dots at intersections (only some)
-      for (let r = 0; r < rows; r += 3) {
-        for (let c = 0; c < cols; c += 3) {
-          const p = points[r][c];
-          const dotAlpha = 0.3 + p.depth * 0.6;
-          const dotSize = 1 + p.depth * 2.5;
-
-          ctx.fillStyle = `rgba(0, 255, 136, ${dotAlpha})`;
-          ctx.shadowColor = "rgba(0, 255, 136, 0.6)";
-          ctx.shadowBlur = 8;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, dotSize, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-      }
-
-      time += 0.015;
       animationId = requestAnimationFrame(draw);
     };
 
@@ -117,37 +88,45 @@ function MeshWave() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="hero-mesh-canvas" />;
+  return <canvas ref={canvasRef} className="hero-network-canvas" />;
 }
 
-/* ── Floating Dots ── */
-function FloatingDots() {
-  const dots = Array.from({ length: 15 }, (_, i) => ({
+/* ── Floating Social Icons ── */
+function FloatingSocialIcons() {
+  const icons = [
+    <FaFacebookF />, <FaInstagram />, <FaTwitter />, <FaLinkedinIn />, <FaTiktok />, <FaYoutube />,
+    <FiHeart />, <FiMessageCircle />, <FiShare2 />, <FiThumbsUp />,
+    <FaInstagram />, <FaYoutube />, <FiHeart />, <FaTiktok />, <FiThumbsUp />
+  ];
+
+  const floatingItems = icons.map((icon, i) => ({
     id: i,
+    icon,
     left: `${5 + Math.random() * 90}%`,
     top: `${5 + Math.random() * 90}%`,
-    size: 3 + Math.random() * 8,
+    size: 20 + Math.random() * 24, // 20px to 44px
     delay: Math.random() * 5,
-    duration: 4 + Math.random() * 6,
-    opacity: 0.2 + Math.random() * 0.5,
+    duration: 6 + Math.random() * 8, // slower float
+    opacity: 0.15 + Math.random() * 0.35,
   }));
 
   return (
-    <div className="floating-dots" aria-hidden="true">
-      {dots.map((d) => (
+    <div className="floating-socials" aria-hidden="true">
+      {floatingItems.map((item) => (
         <span
-          key={d.id}
-          className="float-dot"
+          key={item.id}
+          className="float-social-icon"
           style={{
-            left: d.left,
-            top: d.top,
-            width: `${d.size}px`,
-            height: `${d.size}px`,
-            opacity: d.opacity,
-            animationDelay: `${d.delay}s`,
-            animationDuration: `${d.duration}s`,
+            left: item.left,
+            top: item.top,
+            fontSize: `${item.size}px`,
+            opacity: item.opacity,
+            animationDelay: `${item.delay}s`,
+            animationDuration: `${item.duration}s`,
           }}
-        />
+        >
+          {item.icon}
+        </span>
       ))}
     </div>
   );
@@ -186,13 +165,13 @@ export default function Hero() {
       {/* Dark BG with subtle radial */}
       <div className="hero-bg" aria-hidden="true" />
 
-      {/* Floating neon dots */}
-      <FloatingDots />
+      {/* Floating social media icons */}
+      <FloatingSocialIcons />
 
-      {/* 3D Mesh Wave Graphic */}
-      <div className="hero-mesh-wrap" aria-hidden="true">
-        <MeshWave />
-        <div className="mesh-glow" />
+      {/* Social Network Node Graphic */}
+      <div className="hero-network-wrap" aria-hidden="true">
+        <SocialNetwork />
+        <div className="network-glow" />
       </div>
 
       {/* Abstract glow orbs */}
