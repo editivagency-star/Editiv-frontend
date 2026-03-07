@@ -49,7 +49,7 @@ const packages = [
         items: [
           { text: "12 Graphics", included: true },
           { text: "4 Videos", included: true },
-          { text: "SMO Research", included: true },
+          { text: "SMO Research", included: false },
           { text: "Content Research", included: true },
           { text: "Meme Marketing", included: false },
           { text: "Marketing Strategies", included: false },
