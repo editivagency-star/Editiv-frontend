@@ -108,6 +108,13 @@
   color: rgba(255, 255, 255, 0.65);
 }
 
+.ap-file-hint {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.2px;
+  margin-top: 2px;
+}
+
 .ap-file-label input[type="file"] {
   display: none;
 }

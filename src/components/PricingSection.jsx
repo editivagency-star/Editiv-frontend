@@ -69,33 +69,35 @@ export default function PricingSection() {
               >
                 {plan.badge && <div className="pricing-badge">{plan.badge}</div>}
 
-                <div className="plan-top">
-                  <h4 className="plan-title">{plan.title}</h4>
-                  {plan.subtitle ? (
-                    <p className="plan-subtitle">{plan.subtitle}</p>
-                  ) : null}
+                <div className="card-inner">
+                  <div className="plan-top">
+                    <h4 className={`plan-title ${plan.title.toLowerCase()}-title`}>{plan.title}</h4>
+                    {plan.subtitle ? (
+                      <p className="plan-subtitle">{plan.subtitle}</p>
+                    ) : null}
+                  </div>
+
+                  <div className="plan-price">{plan.price}</div>
+
+                  <ul className="plan-list">
+                    {plan.items.map((item, idx) => (
+                      <li key={idx} className="ok">
+                        ✔ {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    className="plan-btn"
+                    href={`https://wa.me/919436452223?text=${encodeURIComponent(
+                      plan.whatsappMessage
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Enquire on WhatsApp <span className="arrow">→</span>
+                  </a>
                 </div>
-
-                <div className="plan-price">{plan.price}</div>
-
-                <ul className="plan-list">
-                  {plan.items.map((item, idx) => (
-                    <li key={idx} className="ok">
-                      ✔ {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  className="plan-btn"
-                  href={`https://wa.me/919436452223?text=${encodeURIComponent(
-                    plan.whatsappMessage
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Enquire on WhatsApp <span className="arrow">→</span>
-                </a>
               </div>
             ))}
           </div>

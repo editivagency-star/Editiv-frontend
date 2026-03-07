@@ -50,8 +50,19 @@ export default function AddPortfolio() {
   // =========================
   // ✅ Handle file changes (with preview)
   // =========================
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
   const handlePortfolioImageChange = (e) => {
     const file = e.target.files?.[0];
+
+    if (file && file.size > MAX_FILE_SIZE) {
+      alert("File exceeds 10MB limit. Please choose a smaller file.");
+      e.target.value = ""; // reset input
+      setImage(null);
+      setImagePreview("");
+      return;
+    }
+
     setImage(file || null);
 
     // clear old preview
@@ -68,6 +79,15 @@ export default function AddPortfolio() {
 
   const handleFolderImageChange = (e) => {
     const file = e.target.files?.[0];
+
+    if (file && file.size > MAX_FILE_SIZE) {
+      alert("File exceeds 10MB limit. Please choose a smaller file.");
+      e.target.value = "";
+      setFolderImage(null);
+      setFolderPreview("");
+      return;
+    }
+
     setFolderImage(file || null);
 
     // clear old preview
@@ -238,8 +258,9 @@ export default function AddPortfolio() {
               <label className="ap-file-label">
                 <FiUploadCloud className="ap-file-icon" />
                 {folderImage ? folderImage.name : "Choose thumbnail image"}
-                <input type="file" accept="image/*" onChange={handleFolderImageChange} />
+                <input type="file" accept="image/*,video/*" onChange={handleFolderImageChange} />
               </label>
+              <span className="ap-file-hint">Max file size: 10MB · JPG, PNG, GIF, MP4</span>
             </div>
 
             {folderPreview && (
@@ -274,12 +295,13 @@ export default function AddPortfolio() {
 
         {/* Portfolio Image */}
         <div className="ap-field">
-          <label className="ap-label">Project Image</label>
+          <label className="ap-label">Project Image / Video</label>
           <label className="ap-file-label">
             <FiUploadCloud className="ap-file-icon" />
-            {image ? image.name : "Click to choose an image"}
-            <input type="file" accept="image/*" onChange={handlePortfolioImageChange} />
+            {image ? image.name : "Click to choose an image or video"}
+            <input type="file" accept="image/*,video/*" onChange={handlePortfolioImageChange} />
           </label>
+          <span className="ap-file-hint">Max file size: 10MB · JPG, PNG, GIF, MP4</span>
         </div>
 
         {imagePreview && (

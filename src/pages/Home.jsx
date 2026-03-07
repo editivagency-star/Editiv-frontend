@@ -5,6 +5,7 @@ import Stats from "../components/Stats";
 import Results from "../components/Results";
 import InstagramSection from "../components/InstagramSection";
 import GuaranteeStrip from "../components/GuaranteeStrip";
+
 import PricingSection from "../components/PricingSection";
 import PortfolioGallery from "../components/PortfolioGallery";
 import ServiceSection from "../components/ServiceSection";
@@ -54,9 +55,6 @@ export default function Home() {
         <InstagramSection />
       </ScrollReveal>
 
-      <ScrollReveal animation="scale-up">
-        <GuaranteeStrip />
-      </ScrollReveal>
 
       <hr className="section-divider" />
 
