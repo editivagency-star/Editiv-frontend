@@ -52,6 +52,21 @@
   margin: 0 auto;
 }
 
+.pricing-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Wrapper — provides position context for badge without overflow:hidden */
+.pricing-card-wrap {
+  position: relative;
+  padding-top: 16px;
+  /* space for the badge above the card */
+  display: flex;
+  flex-direction: column;
+}
+
 /* ================================
    CARD — Rotating Glow Border
 ================================ */
@@ -144,10 +159,10 @@
   transform: scale(1.06) translateY(-6px);
 }
 
-/* Badge */
+/* Badge — now relative to .pricing-card-wrap, not the card */
 .pricing-badge {
   position: absolute;
-  top: -14px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(90deg, #00ff88, #00e070);
@@ -159,7 +174,119 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
   box-shadow: 0 4px 16px rgba(0, 255, 136, 0.4);
-  z-index: 3;
+  z-index: 10;
+}
+
+/* Platinum card — silver/white spinner instead of green */
+.pricing-card.platinum-card::before {
+  background-image: linear-gradient(180deg, #c8c8c8, #ffffff, #a0a0a0);
+  animation-duration: 3.5s;
+  opacity: 0.7;
+}
+
+.pricing-card.platinum-card::after {
+  background: #0a0f14;
+}
+
+.pricing-card.platinum-card {
+  background: #0a0f14;
+}
+
+.pricing-card.platinum-card:hover::before {
+  background-image: linear-gradient(180deg, #ffffff, #e0e0e0, #ffffff);
+  animation-duration: 2s;
+  opacity: 1;
+}
+
+/* Platinum badge */
+.platinum-badge {
+  background: linear-gradient(90deg, #b0b0b0, #ffffff, #c0c0c0) !important;
+  color: #111 !important;
+  box-shadow: 0 4px 20px rgba(200, 200, 200, 0.35) !important;
+}
+
+/* Platinum price */
+.platinum-price {
+  color: #d0d0d0 !important;
+  text-shadow: 0 0 20px rgba(200, 200, 255, 0.4) !important;
+}
+
+.platinum-price::before {
+  background: rgba(200, 200, 200, 0.3) !important;
+}
+
+/* ── GOLD card — gold border spin + gold button ── */
+.pricing-card.gold-card {
+  background: #1a1200;
+}
+
+.pricing-card.gold-card::after {
+  background: #1a1200;
+}
+
+.pricing-card.gold-card::before {
+  background-image: linear-gradient(180deg, #b8860b, #ffd700, #ffe566, #ffd700, #b8860b);
+}
+
+.pricing-card.gold-card:hover::before {
+  background-image: linear-gradient(180deg, #ffd700, #fff176, #ffd700);
+  animation-duration: 1.5s;
+}
+
+.pricing-card.gold-card .plan-price {
+  color: #ffd700;
+  text-shadow: 0 0 16px rgba(255, 200, 0, 0.4);
+}
+
+.pricing-card.gold-card .plan-price::before {
+  background: rgba(255, 200, 0, 0.3);
+}
+
+.pricing-card.gold-card .plan-btn {
+  background: linear-gradient(135deg, #b8860b, #ffd700, #ffa500);
+  color: #1a0f00;
+  box-shadow: 0 4px 20px rgba(255, 200, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pricing-card.gold-card .plan-btn:hover {
+  box-shadow: 0 8px 30px rgba(255, 210, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ── SILVER card — silver border spin + silver button ── */
+.pricing-card.silver-card {
+  background: #111214;
+}
+
+.pricing-card.silver-card::after {
+  background: #111214;
+}
+
+.pricing-card.silver-card::before {
+  background-image: linear-gradient(180deg, #888, #d4d4d4, #ffffff, #d4d4d4, #888);
+}
+
+.pricing-card.silver-card:hover::before {
+  background-image: linear-gradient(180deg, #c0c0c0, #ffffff, #c0c0c0);
+  animation-duration: 1.5s;
+}
+
+.pricing-card.silver-card .plan-price {
+  color: #d4d4d4;
+  text-shadow: 0 0 16px rgba(200, 200, 200, 0.35);
+}
+
+.pricing-card.silver-card .plan-price::before {
+  background: rgba(200, 200, 200, 0.25);
+}
+
+.pricing-card.silver-card .plan-btn {
+  background: linear-gradient(135deg, #888, #d4d4d4, #ffffff, #c0c0c0);
+  color: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(180, 180, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.pricing-card.silver-card .plan-btn:hover {
+  box-shadow: 0 8px 30px rgba(200, 200, 200, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 /* ================================
@@ -182,32 +309,90 @@
 .gold-title {
   background: linear-gradient(135deg,
       #b8860b 0%,
-      #ffd700 30%,
-      #ffe566 50%,
-      #ffd700 70%,
+      #ffd700 20%,
+      #ffe566 35%,
+      #ffa500 50%,
+      #ffe566 65%,
+      #ffd700 80%,
       #b8860b 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   text-shadow: none;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.35));
+  animation: goldShimmer 3s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.4));
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* Silver metallic gradient */
 .silver-title {
   background: linear-gradient(135deg,
       #8a8a8a 0%,
-      #d4d4d4 25%,
-      #ffffff 50%,
-      #c0c0c0 75%,
-      #888 100%);
+      #d4d4d4 20%,
+      #ffffff 35%,
+      #a0a0a0 50%,
+      #ffffff 65%,
+      #c8c8c8 80%,
+      #888888 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
   text-shadow: none;
-  filter: drop-shadow(0 0 8px rgba(200, 200, 200, 0.25));
+  animation: silverShimmer 3.5s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(200, 200, 200, 0.3));
+}
+
+@keyframes silverShimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Platinum metallic gradient */
+.platinum-title {
+  background: linear-gradient(135deg,
+      #9a9a9a 0%,
+      #e5e5e5 20%,
+      #ffffff 35%,
+      #c8c8c8 50%,
+      #ffffff 65%,
+      #d0d0d0 80%,
+      #a0a0a0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  animation: platinumShimmer 3s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(220, 220, 255, 0.5));
+}
+
+@keyframes platinumShimmer {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .plan-subtitle {
@@ -265,6 +450,28 @@
   flex-shrink: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7' stroke='%2300ff88' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Not-included feature */
+.plan-list li.nok {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 80, 80, 0.4);
+}
+
+.plan-list li.nok::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='%23ff5555' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 10px;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -331,6 +538,21 @@
   transform: translateX(5px);
 }
 
+/* Platinum button */
+.platinum-btn {
+  background: linear-gradient(135deg, #9a9a9a, #ffffff, #b0b0b0) !important;
+  color: #0a0f14 !important;
+  box-shadow:
+    0 4px 20px rgba(200, 200, 200, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+.platinum-btn:hover {
+  box-shadow:
+    0 8px 30px rgba(220, 220, 220, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
 /* ================================
    FOOT NOTE
 ================================ */
@@ -362,11 +584,18 @@
     max-width: 480px;
   }
 
-  .pricing-card.featured {
+  .pricing-grid-3 {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+
+  .pricing-card.featured,
+  .pricing-card.platinum-card {
     transform: none;
   }
 
-  .pricing-card.featured:hover {
+  .pricing-card.featured:hover,
+  .pricing-card.platinum-card:hover {
     transform: translateY(-8px);
   }
 }
