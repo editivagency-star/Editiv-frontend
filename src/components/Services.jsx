@@ -5,6 +5,7 @@ import {
   FiFilm,
   FiTarget,
   FiShare2,
+  FiMonitor,
 } from "react-icons/fi";
 import { useEffect, useRef } from "react";
 import ScrollReveal, { useScrollReveal } from "./ScrollAnimations";
@@ -47,6 +48,16 @@ const services = [
     icon: FiFilm,
     tagline: "From concept to final cut.",
     points: ["Brand commercials", "Product ad films", "Campaign videos"],
+  },
+  {
+    title: "Full Stack Web Development (MERN)",
+    icon: FiMonitor,
+    tagline: "Custom web applications built to scale.",
+    points: [
+      "React Frontend",
+      "Node.js & Express Backend",
+      "MongoDB Database Design",
+    ],
   },
 ];
 
