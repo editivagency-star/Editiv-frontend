@@ -33,19 +33,19 @@ export default function Results() {
         {results.map((item, index) => (
           <div key={index} className={`result-card glass glow card-${index}`}>
             <div className="result-content">
-  <div className="logo-box glass glow">
-    <img src={item.logo} alt={item.brand} />
-  </div>
+              <div className="logo-box">
+                <img src={item.logo} alt={item.brand} />
+              </div>
 
-  <div className="result-text">
-  <h4 className="highlight-result">{item.title}</h4>
-  <p>{item.desc}</p>
-</div>
+              <div className="result-text">
+                <h4 className="highlight-result">{item.title}</h4>
+                <p>{item.desc}</p>
+              </div>
 
-</div>
+            </div>
 
 
-            
+
           </div>
         ))}
       </div>

@@ -46,9 +46,7 @@ export default function Home() {
       <hr className="section-divider" />
 
       <section id="results">
-        <ScrollReveal animation="fade-up">
-          <Results />
-        </ScrollReveal>
+        <Results />
       </section>
 
       <ScrollReveal animation="fade-up">
