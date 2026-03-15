@@ -8,18 +8,18 @@ export default function InstagramSection() {
         className="insta-preview"
         onClick={() =>
           window.open(
-            "https://www.instagram.com/reel/DSrBdItgXBA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+            "https://www.instagram.com/editiv_agency?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
             "_blank"
           )
         }
         role="button"
-        aria-label="Open Instagram Reel"
+        aria-label="Open Instagram Page"
       >
         <div className="insta-layer back"></div>
         <div className="insta-layer mid"></div>
 
         <div className="insta-layer front">
-          <img src="/reel.jpg" alt="Reel Preview" />
+          <img src="/editiv-reel.jpg?v=1" alt="Editiv Instagram Page" />
           <div className="play-btn">▶</div>
         </div>
       </div>

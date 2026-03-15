@@ -91,6 +91,10 @@
 
   .founder-image-stack {
     margin-bottom: 40px;
+    width: 100%;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
