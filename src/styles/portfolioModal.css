@@ -19,7 +19,7 @@
   overflow-y:auto;
   border-radius:22px;
   position:relative;
-  box-shadow:0 0 50px rgba(0,255,150,.45);
+  box-shadow:0 0 50px rgba(255, 94, 0,.45);
   animation: pop .25s ease;
   padding:25px;
 }
@@ -64,7 +64,7 @@
   top:10px;
   float:right;
   background:#0a1511;
-  border:1px solid rgba(0,255,150,.3);
+  border:1px solid rgba(255, 94, 0,.3);
   color:#00ff8f;
   width:34px;
   height:34px;

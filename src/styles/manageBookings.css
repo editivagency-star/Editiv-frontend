@@ -28,7 +28,7 @@
 }
 
 .status.new {
-  background: rgba(0, 255, 136, 0.2);
+  background: rgba(255, 94, 0, 0.2);
   color: var(--neon);
 }
 
@@ -45,10 +45,10 @@
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(14px);
   border-radius: 16px;
-  border: 1px solid rgba(0, 255, 150, 0.25);
+  border: 1px solid rgba(255, 94, 0, 0.25);
   overflow: hidden;
 
-  box-shadow: 0 0 30px rgba(0, 255, 150, 0.12);
+  box-shadow: 0 0 30px rgba(255, 94, 0, 0.12);
 }
 
 /* Table */
@@ -71,7 +71,7 @@
   color: var(--neon);
   font-weight: 600;
   text-align: left;
-  border-bottom: 1px solid rgba(0, 255, 150, 0.2);
+  border-bottom: 1px solid rgba(255, 94, 0, 0.2);
 }
 
 /* Rows */
@@ -81,8 +81,8 @@
 }
 
 .booking-table tbody tr:hover {
-  background: rgba(0, 255, 150, 0.06);
-  box-shadow: inset 0 0 10px rgba(0, 255, 150, 0.15);
+  background: rgba(255, 94, 0, 0.06);
+  box-shadow: inset 0 0 10px rgba(255, 94, 0, 0.15);
 }
 
 .booking-table td {
@@ -104,9 +104,9 @@
 }
 
 .status.new {
-  background: rgba(0, 255, 150, 0.2);
+  background: rgba(255, 94, 0, 0.2);
   color: #00ff99;
-  box-shadow: 0 0 8px rgba(0, 255, 150, 0.4);
+  box-shadow: 0 0 8px rgba(255, 94, 0, 0.4);
 }
 
 /* Delete button */

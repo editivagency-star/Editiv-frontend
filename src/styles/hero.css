@@ -13,15 +13,14 @@
   justify-content: center;
 }
 
-/* ── Dark Background ── */
+/* ── Creme Background ── */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse at 50% 30%, rgba(0, 255, 136, 0.06) 0%, transparent 60%),
-    #000;
-  /* Pure black like reference */
+    radial-gradient(ellipse at 50% 30%, rgba(255, 94, 0, 0.05) 0%, transparent 60%),
+    #FDFBF7;
 }
 
 /* ── Global Network Background ── */
@@ -31,6 +30,7 @@
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
+  filter: invert(1) opacity(0.08); /* Making the dark globe work elegantly on light mode */
 }
 
 .hero-network-bg img {
@@ -48,17 +48,16 @@
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(0, 255, 136, 0.9) 1px, transparent 2px),
-    radial-gradient(circle at 88% 22%, rgba(0, 255, 136, 0.7) 1px, transparent 1.5px),
-    radial-gradient(circle at 42% 12%, rgba(0, 255, 136, 0.6) 1px, transparent 1.5px),
-    radial-gradient(circle at 68% 60%, rgba(0, 255, 136, 0.8) 1.5px, transparent 3px),
-    radial-gradient(circle at 24% 72%, rgba(0, 255, 136, 0.5) 1px, transparent 2px),
-    radial-gradient(circle at 77% 80%, rgba(0, 255, 136, 0.7) 1px, transparent 1.5px),
-    radial-gradient(circle at 55% 40%, rgba(0, 255, 136, 0.6) 0.5px, transparent 1px),
-    radial-gradient(circle at 33% 45%, rgba(0, 255, 136, 0.4) 0.5px, transparent 1px);
+    radial-gradient(circle at 12% 18%, rgba(255, 94, 0, 0.5) 1px, transparent 2px),
+    radial-gradient(circle at 88% 22%, rgba(255, 94, 0, 0.4) 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 12%, rgba(255, 94, 0, 0.3) 1px, transparent 1.5px),
+    radial-gradient(circle at 68% 60%, rgba(255, 94, 0, 0.4) 1.5px, transparent 3px),
+    radial-gradient(circle at 24% 72%, rgba(255, 94, 0, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 77% 80%, rgba(255, 94, 0, 0.4) 1px, transparent 1.5px),
+    radial-gradient(circle at 55% 40%, rgba(255, 94, 0, 0.3) 0.5px, transparent 1px),
+    radial-gradient(circle at 33% 45%, rgba(255, 94, 0, 0.2) 0.5px, transparent 1px);
   animation: particleFloat 6s ease-in-out infinite alternate;
   pointer-events: none;
-  mix-blend-mode: screen;
 }
 
 @keyframes particleFloat {
@@ -95,7 +94,7 @@
 .g1 {
   width: 600px;
   height: 600px;
-  background: rgba(0, 255, 136, 0.3);
+  background: rgba(255, 94, 0, 0.15);
   top: -10%;
   left: -10%;
 }
@@ -103,8 +102,7 @@
 .g2 {
   width: 500px;
   height: 500px;
-  background: rgba(0, 150, 255, 0.15);
-  /* subtle cyan mix */
+  background: rgba(0, 0, 0, 0.05); /* subtle dark mix */
   bottom: 10%;
   right: -5%;
 }
@@ -112,11 +110,11 @@
 .hero-abstract .grain {
   position: absolute;
   inset: 0;
-  opacity: 0.06;
+  opacity: 0.15;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
-/* ── Glass Panel Wrapper ── */
+/* ── Light Glass Panel Wrapper ── */
 .hero-glass-panel {
   position: relative;
   z-index: 10;
@@ -130,22 +128,16 @@
   align-items: center;
 
   /* Glassmorphism Effect */
-  background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.01) 0%,
-      rgba(0, 255, 136, 0.005) 100%);
-  backdrop-filter: blur(0px);
-  /* No blur - let the sharp background show through */
-  -webkit-backdrop-filter: blur(0px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 0 40px rgba(0, 255, 136, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
 
-  /* Subtle Dot Grid Mask on the Panel */
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  /* Subtle dark Dot Grid Mask on the Panel */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
 
   padding: 60px 40px;
@@ -170,9 +162,9 @@
   gap: 10px;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(0, 255, 136, 0.08);
-  border: 1px solid rgba(0, 255, 136, 0.2);
-  color: rgba(220, 255, 245, 0.92);
+  background: rgba(255, 94, 0, 0.06);
+  border: 1px solid rgba(255, 94, 0, 0.15);
+  color: #FF5E00;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -195,7 +187,7 @@
   height: 9px;
   border-radius: 50%;
   background: var(--neon);
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.7);
+  box-shadow: 0 0 12px rgba(255, 94, 0, 0.4);
   animation: dotPulse 2s ease-in-out infinite;
 }
 
@@ -203,11 +195,11 @@
 
   0%,
   100% {
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    box-shadow: 0 0 10px rgba(255, 94, 0, 0.3);
   }
 
   50% {
-    box-shadow: 0 0 22px rgba(0, 255, 136, 0.9), 0 0 40px rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 20px rgba(255, 94, 0, 0.6), 0 0 35px rgba(255, 94, 0, 0.2);
   }
 }
 
@@ -215,10 +207,9 @@
 .hero-heading {
   font-size: clamp(40px, 6vw, 84px);
   line-height: 1.05;
-  font-weight: 300;
-  /* Thin, elegant text */
-  color: #fff;
-  letter-spacing: -1px;
+  font-weight: 800; /* Bold for light mode */
+  color: #111;
+  letter-spacing: -1.5px;
   margin-bottom: 24px;
 
   opacity: 0;
@@ -235,8 +226,8 @@
 
 /* Specifically bold/neon the word "Growth" */
 .hero-heading .neon-text {
-  font-weight: 700;
-  background: linear-gradient(to right, #ffffff, var(--neon));
+  font-weight: 800;
+  background: var(--neon);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -246,20 +237,18 @@
 
 .hero-subtitle {
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
+  color: #555;
   max-width: 600px;
   line-height: 1.6;
   margin-bottom: 48px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .neon {
-  background: linear-gradient(135deg, #00ff88, #00ffd5, #00ff88);
-  background-size: 200% auto;
+  background: var(--neon);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 4s ease-in-out infinite;
   text-shadow: none;
 }
 
@@ -283,15 +272,14 @@
   transition-delay: 0.45s;
 }
 
-/* Elegant Outline Primary Button */
+/* Elegant Outlined Primary Button */
 .btn-primary {
   padding: 14px 32px;
   font-size: 15px;
-  font-weight: 400;
-  /* Thin text */
+  font-weight: 600;
   color: #fff;
-  background: rgba(0, 255, 136, 0.05);
-  border: 1px solid rgba(0, 255, 136, 0.4);
+  background: var(--neon);
+  border: 1px solid var(--neon);
   border-radius: 40px;
   text-decoration: none;
   display: flex;
@@ -299,18 +287,18 @@
   gap: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(255, 94, 0, 0.2);
 }
 
 .btn-primary:hover {
-  background: rgba(0, 255, 136, 0.15);
-  border-color: #00ff88;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+  background: #E65400;
+  border-color: #E65400;
+  box-shadow: 0 8px 25px rgba(255, 94, 0, 0.3);
   transform: translateY(-2px);
 }
 
 .btn-primary .arrow {
-  color: #00ff88;
+  color: #fff;
   transition: transform 0.3s ease;
 }
 
@@ -322,32 +310,34 @@
 .btn-secondary {
   padding: 14px 32px;
   font-size: 15px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  color: #111;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 40px;
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  background: #FDFBF7;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #000;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .btn-secondary svg {
-  color: rgba(255, 255, 255, 0.5);
+  color: #FF5E00;
   transition: color 0.3s ease;
 }
 
 .btn-secondary:hover svg {
-  color: #fff;
+  color: #E65400;
 }
 
 /* ── Hero Stats Container ── */
@@ -358,7 +348,6 @@
   flex-direction: column;
   gap: 16px;
   align-items: center;
-  /* Center them perfectly */
 }
 
 /* Upper boxes */
@@ -369,38 +358,37 @@
   justify-content: center;
 }
 
-/* Glassy Stat Box */
+/* Light Stat Box */
 .stat-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 24px 32px;
   border-radius: 16px;
-  backdrop-filter: blur(8px);
   text-align: center;
   flex: 1;
   min-width: 200px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .stat-box:hover {
-  border-color: rgba(0, 255, 136, 0.3);
-  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.1);
+  border-color: rgba(255, 94, 0, 0.2);
+  box-shadow: 0 15px 40px rgba(255, 94, 0, 0.1);
   transform: translateY(-3px);
 }
 
 .stat-val {
   display: block;
   font-size: 32px;
-  font-weight: 300;
-  /* Thinner */
-  color: #fff;
+  font-weight: 800; /* Bolder on light theme */
+  color: #111;
   margin-bottom: 4px;
 }
 
 .stat-label {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 300;
+  color: #555;
+  font-weight: 500;
 }
 
 /* ── Lower wide bar ── */
@@ -409,11 +397,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 20px 0;
   border-radius: 16px;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 
   opacity: 0;
   transform: translateY(20px);
@@ -436,20 +424,20 @@
 
 .bm-val {
   font-size: 24px;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700;
+  color: #111;
 }
 
 .bm-label {
   font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  color: #555;
 }
 
 .bm-divider {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 /* ═══════════════════════

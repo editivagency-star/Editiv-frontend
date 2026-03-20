@@ -22,11 +22,11 @@
 
 .insta-preview:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 255, 150, 0.3);
+  box-shadow: 0 20px 60px rgba(255, 94, 0, 0.3);
 }
 
 .insta-preview:hover .insta-layer.front {
-  border-color: #00ff9c;
+  border-color: #FF5E00;
 }
 
 .insta-layer {
@@ -34,12 +34,12 @@
   width: 100%;
   height: 100%;
   border-radius: 28px;
-  box-shadow: 0 0 18px rgba(0, 255, 150, 0.12);
+  box-shadow: 0 0 18px rgba(255, 94, 0, 0.12);
 }
 
 /* depth layers - glassmorphic glow effect */
 .insta-layer.back {
-  background: linear-gradient(135deg, rgba(0, 255, 150, 0.4), rgba(0, 100, 50, 0.8));
+  background: linear-gradient(135deg, rgba(255, 94, 0, 0.4), rgba(200, 50, 0, 0.8));
   transform: rotate(-8deg) translate(-10px, 15px);
   opacity: 0.6;
   filter: blur(2px);
@@ -47,7 +47,7 @@
 }
 
 .insta-layer.mid {
-  background: linear-gradient(135deg, rgba(0, 255, 150, 0.6), rgba(0, 200, 100, 0.4));
+  background: linear-gradient(135deg, rgba(255, 94, 0, 0.6), rgba(255, 120, 0, 0.4));
   transform: rotate(6deg) translate(15px, -5px);
   opacity: 0.8;
   z-index: 2;
@@ -61,11 +61,11 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
-  border: 2px solid rgba(0, 255, 150, 0.5);
+  border: 2px solid rgba(255, 94, 0, 0.5);
   /* Subtle border */
   background: #000;
   /* Solid dark background to frame logo */
-  box-shadow: inset 0 0 40px rgba(0, 255, 150, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 40px rgba(255, 94, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: border-color 0.3s ease;
 }
 
@@ -74,6 +74,7 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  filter: hue-rotate(-80deg);
 }
 
 .insta-preview:hover .insta-layer.front img {
@@ -96,33 +97,33 @@
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(0, 255, 150, 0.4);
+  border: 1.5px solid rgba(255, 94, 0, 0.4);
 
   /* Triangle style */
   color: var(--neon);
   font-size: 26px;
   padding-left: 6px;
   /* Offset to center triangle optically */
-  text-shadow: 0 0 10px rgba(0, 255, 150, 0.8);
+  text-shadow: 0 0 10px rgba(255, 94, 0, 0.8);
 
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.4),
-    inset 0 0 15px rgba(0, 255, 150, 0.1);
+    inset 0 0 15px rgba(255, 94, 0, 0.1);
 
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: glassPulse 2s infinite ease-in-out;
 }
 
 .insta-preview:hover .play-btn {
-  background: rgba(0, 255, 150, 0.2);
-  border-color: rgba(0, 255, 150, 0.9);
+  background: rgba(255, 94, 0, 0.2);
+  border-color: rgba(255, 94, 0, 0.9);
   color: #fff;
   transform: scale(1.15) !important;
   /* overrides animation */
   animation-play-state: paused;
   box-shadow:
-    0 10px 40px rgba(0, 255, 150, 0.5),
-    inset 0 0 30px rgba(0, 255, 150, 0.4);
+    0 10px 40px rgba(255, 94, 0, 0.5),
+    inset 0 0 30px rgba(255, 94, 0, 0.4);
   text-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }
 
@@ -139,7 +140,7 @@
   opacity: 0.9;
   display: block;
   margin-bottom: 16px;
-  color: #dfffee;
+  color: #fff3ed;
 }
 
 .insta-title {
@@ -152,8 +153,8 @@
 .insta-neon {
   color: var(--neon);
   text-shadow:
-    0 0 10px rgba(0, 255, 150, 0.35),
-    0 0 24px rgba(0, 255, 150, 0.18);
+    0 0 10px rgba(255, 94, 0, 0.35),
+    0 0 24px rgba(255, 94, 0, 0.18);
 }
 
 .insta-desc {
@@ -178,8 +179,8 @@
 .insta-hook span {
   color: var(--neon);
   text-shadow:
-    0 0 8px rgba(0, 255, 150, 0.65),
-    0 0 18px rgba(0, 255, 150, 0.30);
+    0 0 8px rgba(255, 94, 0, 0.65),
+    0 0 18px rgba(255, 94, 0, 0.30);
 }
 
 .insta-hook .dot {
@@ -203,12 +204,12 @@
   font-size: 15px;
   cursor: pointer;
 
-  background: linear-gradient(90deg, #00ff88, #00cc66);
-  color: #000;
+  background: linear-gradient(90deg, #FF5E00, #ff8c00);
+  color: #fff;
 
   box-shadow:
     inset 0 0 10px rgba(255, 255, 255, 0.25),
-    0 0 22px rgba(0, 255, 150, 0.55);
+    0 0 22px rgba(255, 94, 0, 0.55);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -217,7 +218,7 @@
   transform: translateY(-2px);
   box-shadow:
     inset 0 0 12px rgba(255, 255, 255, 0.3),
-    0 0 35px rgba(0, 255, 150, 0.9);
+    0 0 35px rgba(255, 94, 0, 0.9);
 }
 
 .insta-btn .arrow {
@@ -233,17 +234,17 @@
 @keyframes glassPulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 255, 150, 0.1), 0 0 0 0 rgba(0, 255, 150, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 94, 0, 0.1), 0 0 0 0 rgba(255, 94, 0, 0.3);
   }
 
   50% {
     transform: scale(1.03);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 255, 150, 0.3), 0 0 20px 5px rgba(0, 255, 150, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 94, 0, 0.3), 0 0 20px 5px rgba(255, 94, 0, 0.15);
   }
 
   100% {
     transform: scale(1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 255, 150, 0.1), 0 0 0 0 rgba(0, 255, 150, 0);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 94, 0, 0.1), 0 0 0 0 rgba(255, 94, 0, 0);
   }
 }
 

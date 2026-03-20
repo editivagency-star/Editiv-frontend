@@ -9,17 +9,19 @@
 }
 
 .services-label {
-  font-size: 40px;
-  font-weight: 900;
+  font-size: 16px; /* Corrected to a standard label size */
+  font-weight: 800;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  opacity: 0.95;
+  color: #FF5E00;
   margin-bottom: 14px;
+  display: block;
 }
 
 .services-title {
   font-size: 44px;
-  font-weight: 900;
+  font-weight: 800;
+  color: #111;
   margin-bottom: 12px;
 }
 
@@ -28,7 +30,7 @@
   margin: 0 auto;
   font-size: 16px;
   line-height: 1.75;
-  opacity: 0.86;
+  color: #555;
 }
 
 /* Grid */
@@ -52,20 +54,15 @@
   flex-direction: column;
   height: 100%;
 
-  background: linear-gradient(135deg,
-      rgba(0, 255, 150, 0.10),
-      rgba(0, 0, 0, 0.65));
-
-  border: 1px solid rgba(0, 255, 150, 0.20);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.65),
-    inset 0 0 14px rgba(0, 255, 150, 0.06);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
 
-  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
   transform-style: preserve-3d;
   overflow: hidden;
 }
@@ -77,8 +74,8 @@
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(circle at var(--sheen-x) var(--sheen-y),
-      rgba(0, 255, 150, 0.18),
-      transparent 55%);
+      rgba(255, 94, 0, 0.05),
+      transparent 60%);
   pointer-events: none;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -92,10 +89,10 @@
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(90deg,
-      rgba(0, 255, 136, 0.0),
-      rgba(0, 255, 136, 0.5),
-      rgba(0, 255, 200, 0.5),
-      rgba(0, 255, 136, 0.0));
+      rgba(255, 94, 0, 0.0),
+      rgba(255, 94, 0, 0.3),
+      rgba(0, 179, 104, 0.3),
+      rgba(255, 94, 0, 0.0));
   background-size: 300% 100%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -113,23 +110,25 @@
 }
 
 .service-card:hover {
-  border-color: rgba(0, 255, 150, 0.35);
+  border-color: rgba(255, 94, 0, 0.2);
   box-shadow:
-    0 28px 85px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(0, 255, 150, 0.2);
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 0 20px rgba(255, 94, 0, 0.05);
+  transform: translateY(-4px);
 }
 
 /* Typography */
 .service-name {
   font-size: 26px;
-  font-weight: 900;
+  font-weight: 800;
+  color: #111;
   margin-bottom: 10px;
 }
 
 .service-tagline {
   font-size: 15.5px;
   line-height: 1.7;
-  opacity: 0.88;
+  color: #555;
   margin-bottom: 18px;
 }
 
@@ -144,7 +143,7 @@
 
 .service-points li {
   font-size: 15px;
-  opacity: 0.88;
+  color: #444;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -153,7 +152,7 @@
 .service-points li::before {
   content: "✔";
   color: var(--neon);
-  text-shadow: 0 0 10px rgba(0, 255, 150, 0.55);
+  text-shadow: none;
 }
 
 /* Button (uses your existing .btn-neon base) */
@@ -234,5 +233,5 @@
   box-shadow: none;
 
   /* subtle glow only */
-  filter: drop-shadow(0 0 6px rgba(0, 255, 150, 0.6));
+  filter: drop-shadow(0 0 4px rgba(255, 94, 0, 0.2));
 }

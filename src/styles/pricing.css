@@ -25,14 +25,14 @@
 .package-heading {
   font-size: 26px;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.9);
+  color: #111;
   letter-spacing: -0.3px;
   margin-bottom: 6px;
 }
 
 .package-note {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
+  color: #555;
   margin-bottom: 44px;
   letter-spacing: 0.3px;
 }
@@ -79,7 +79,7 @@
   overflow: hidden;
 
   /* Background — same as inner ::after fill */
-  background: #07182E;
+  background: #FFFFFF;
 
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -96,17 +96,17 @@
   left: 50%;
   transform-origin: 0 0;
   transform: translate(-50%, -50%) rotate(0deg);
-  background-image: linear-gradient(180deg, #00ff88, #00c9ff);
+  background-image: linear-gradient(180deg, #FF5E00, #FF7B29);
   animation: rotBGimg 3s linear infinite;
 }
 
-/* ── Dark inner fill that sits on top of spinner ── */
+/* ── Light inner fill that sits on top of spinner ── */
 .pricing-card::after {
   content: '';
   position: absolute;
-  background: #07182E;
-  inset: 5px;
-  border-radius: 20px;
+  background: #FFFFFF;
+  inset: 1.5px;
+  border-radius: 22.5px;
 }
 
 /* ── Content layer sits ABOVE ::before & ::after ── */
@@ -133,7 +133,7 @@
 /* Hover — speed up the sweep */
 .pricing-card:hover::before {
   animation-duration: 1.5s;
-  background-image: linear-gradient(180deg, #00ff88, #00ffe5);
+  background-image: linear-gradient(180deg, #FF5E00, #00ffe5);
 }
 
 .pricing-card:hover {
@@ -145,7 +145,7 @@
 ================================ */
 
 .pricing-card.featured::before {
-  background-image: linear-gradient(180deg, #00ff88, #00ffe5, #00cc66);
+  background-image: linear-gradient(180deg, #FF5E00, #00ffe5, #00cc66);
   opacity: 0.85;
   animation-duration: 3s;
 }
@@ -165,7 +165,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #00ff88, #00e070);
+  background: linear-gradient(90deg, #FF5E00, #00e070);
   color: #002b14;
   padding: 5px 18px;
   border-radius: 999px;
@@ -173,7 +173,7 @@
   font-weight: 900;
   letter-spacing: 0.5px;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.4);
+  box-shadow: 0 4px 16px rgba(255, 94, 0, 0.4);
   z-index: 10;
 }
 
@@ -185,11 +185,11 @@
 }
 
 .pricing-card.diamond-card::after {
-  background: #060d14;
+  background: #F4F9FF; /* Soft Light Cyan */
 }
 
 .pricing-card.diamond-card {
-  background: #060d14;
+  background: #F4F9FF;
 }
 
 .pricing-card.diamond-card:hover::before {
@@ -202,13 +202,13 @@
 .diamond-badge {
   background: linear-gradient(90deg, #00c8ff, #ffffff, #7dd6f5) !important;
   color: #001a2e !important;
-  box-shadow: 0 4px 20px rgba(0, 200, 255, 0.45) !important;
+  box-shadow: 0 4px 20px rgba(0, 200, 255, 0.2) !important;
 }
 
 /* Diamond price */
 .diamond-price {
-  color: #7dd6f5 !important;
-  text-shadow: 0 0 20px rgba(0, 200, 255, 0.5) !important;
+  color: #008eb3 !important; /* Darker cyan for text */
+  text-shadow: none !important;
 }
 
 .diamond-price::before {
@@ -217,11 +217,11 @@
 
 /* ── GOLD card — gold border spin + gold button ── */
 .pricing-card.gold-card {
-  background: #1a1200;
+  background: #FFFBF0; /* Pale Gold */
 }
 
 .pricing-card.gold-card::after {
-  background: #1a1200;
+  background: #FFFBF0;
 }
 
 .pricing-card.gold-card::before {
@@ -234,8 +234,8 @@
 }
 
 .pricing-card.gold-card .plan-price {
-  color: #ffd700;
-  text-shadow: 0 0 16px rgba(255, 200, 0, 0.4);
+  color: #b8860b;
+  text-shadow: none;
 }
 
 .pricing-card.gold-card .plan-price::before {
@@ -245,20 +245,20 @@
 .pricing-card.gold-card .plan-btn {
   background: linear-gradient(135deg, #b8860b, #ffd700, #ffa500);
   color: #1a0f00;
-  box-shadow: 0 4px 20px rgba(255, 200, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 200, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .pricing-card.gold-card .plan-btn:hover {
-  box-shadow: 0 8px 30px rgba(255, 210, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(255, 210, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* ── SILVER card — silver border spin + silver button ── */
 .pricing-card.silver-card {
-  background: #111214;
+  background: #FAFAFA; /* Soft Grey */
 }
 
 .pricing-card.silver-card::after {
-  background: #111214;
+  background: #FAFAFA;
 }
 
 .pricing-card.silver-card::before {
@@ -301,20 +301,13 @@
   font-size: 32px;
   font-weight: 900;
   letter-spacing: -0.5px;
-  color: #fff;
+  color: #111;
   margin-bottom: 4px;
 }
 
 /* Gold metallic gradient */
 .gold-title {
-  background: linear-gradient(135deg,
-      #b8860b 0%,
-      #ffd700 20%,
-      #ffe566 35%,
-      #ffa500 50%,
-      #ffe566 65%,
-      #ffd700 80%,
-      #b8860b 100%);
+  background: linear-gradient(135deg, #b8860b 0%, #8a6308 20%, #b8860b 40%, #ffbb00 60%, #8a6308 80%, #b8860b 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -322,14 +315,12 @@
   color: transparent;
   text-shadow: none;
   animation: goldShimmer 3s linear infinite;
-  filter: drop-shadow(0 0 12px rgba(255, 200, 0, 0.4));
 }
 
 @keyframes goldShimmer {
   0% {
     background-position: 0% center;
   }
-
   100% {
     background-position: 200% center;
   }
@@ -337,14 +328,7 @@
 
 /* Silver metallic gradient */
 .silver-title {
-  background: linear-gradient(135deg,
-      #8a8a8a 0%,
-      #d4d4d4 20%,
-      #ffffff 35%,
-      #a0a0a0 50%,
-      #ffffff 65%,
-      #c8c8c8 80%,
-      #888888 100%);
+  background: linear-gradient(135deg, #777 0%, #444 20%, #777 40%, #999 60%, #555 80%, #777 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -352,14 +336,12 @@
   color: transparent;
   text-shadow: none;
   animation: silverShimmer 3.5s linear infinite;
-  filter: drop-shadow(0 0 10px rgba(200, 200, 200, 0.3));
 }
 
 @keyframes silverShimmer {
   0% {
     background-position: 0% center;
   }
-
   100% {
     background-position: 200% center;
   }
@@ -367,15 +349,7 @@
 
 /* Diamond metallic gradient */
 .diamond-title {
-  background: linear-gradient(135deg,
-      #00a8d4 0%,
-      #7dd6f5 15%,
-      #ffffff 30%,
-      #b3eaff 45%,
-      #ffffff 60%,
-      #00c8ff 75%,
-      #aadff7 90%,
-      #00a8d4 100%);
+  background: linear-gradient(135deg, #007799 0%, #004d66 20%, #007799 40%, #00a8d4 60%, #004d66 80%, #007799 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -383,14 +357,12 @@
   color: transparent;
   text-shadow: none;
   animation: diamondShimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 16px rgba(0, 200, 255, 0.55));
 }
 
 @keyframes diamondShimmer {
   0% {
     background-position: 0% center;
   }
-
   100% {
     background-position: 200% center;
   }
@@ -398,8 +370,8 @@
 
 .plan-subtitle {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
 }
 
 /* Price */
@@ -407,8 +379,8 @@
   margin: 24px 0 28px;
   font-size: 22px;
   font-weight: 900;
-  color: #00ff88;
-  text-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
+  color: #FF5E00;
+  text-shadow: none;
   letter-spacing: -0.3px;
 }
 
@@ -418,7 +390,7 @@
   display: block;
   width: 40px;
   height: 2px;
-  background: rgba(0, 255, 136, 0.35);
+  background: rgba(255, 94, 0, 0.35);
   border-radius: 2px;
   margin-bottom: 18px;
 }
@@ -437,7 +409,7 @@
   gap: 10px;
   margin: 13px 0;
   font-size: 14.5px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #444;
 }
 
 .plan-list li.ok::before {
@@ -446,10 +418,10 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: rgba(0, 255, 136, 0.15);
-  border: 1px solid rgba(0, 255, 136, 0.4);
+  background: rgba(255, 94, 0, 0.15);
+  border: 1px solid rgba(255, 94, 0, 0.4);
   flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7' stroke='%2300ff88' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7' stroke='%23FF5E00' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: 12px;
   background-position: center;
   background-repeat: no-repeat;
@@ -457,9 +429,9 @@
 
 /* Not-included feature */
 .plan-list li.nok {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.4);
   text-decoration: line-through;
-  text-decoration-color: rgba(255, 80, 80, 0.4);
+  text-decoration-color: rgba(0, 0, 0, 0.2);
 }
 
 .plan-list li.nok::before {
@@ -471,7 +443,7 @@
   background: rgba(255, 80, 80, 0.08);
   border: 1px solid rgba(255, 80, 80, 0.3);
   flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='%23ff5555' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 4l8 8M12 4l-8 8' stroke='%23ff5555' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-size: 10px;
   background-position: center;
   background-repeat: no-repeat;
@@ -497,10 +469,10 @@
   letter-spacing: 0.2px;
 
   color: #001a0c;
-  background: linear-gradient(135deg, #00ff88, #00d96e);
+  background: linear-gradient(135deg, #FF5E00, #00d96e);
 
   box-shadow:
-    0 4px 20px rgba(0, 255, 136, 0.35),
+    0 4px 20px rgba(255, 94, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -526,7 +498,7 @@
 .plan-btn:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 8px 30px rgba(0, 255, 136, 0.5),
+    0 8px 30px rgba(255, 94, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -563,7 +535,7 @@
   font-size: 16px;
   font-weight: 700;
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: #555;
 }
 
 /* ================================
