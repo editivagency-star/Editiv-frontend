@@ -15,6 +15,7 @@ export default function AddPortfolio() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [folderId, setFolderId] = useState("");
+  const [driveLink, setDriveLink] = useState("");
   const [image, setImage] = useState(null);
 
   // ✅ preview URL for portfolio image
@@ -22,6 +23,7 @@ export default function AddPortfolio() {
 
   // folder form
   const [folderName, setFolderName] = useState("");
+  const [folderType, setFolderType] = useState("image");
   const [folderImage, setFolderImage] = useState(null);
 
   // ✅ preview URL for folder image
@@ -121,6 +123,7 @@ export default function AddPortfolio() {
 
     const formData = new FormData();
     formData.append("name", folderName);
+    formData.append("type", folderType);
     formData.append("image", folderImage);
 
     try {
@@ -141,6 +144,7 @@ export default function AddPortfolio() {
 
       // reset + hide
       setFolderName("");
+      setFolderType("image");
       setFolderImage(null);
 
       if (folderPreview) URL.revokeObjectURL(folderPreview);
@@ -164,10 +168,21 @@ export default function AddPortfolio() {
       return;
     }
 
+    const selectedFolderObj = folders.find(f => f._id === folderId);
+    const isVideoFolder = selectedFolderObj?.type === "video";
+
+    if (isVideoFolder && !driveLink) {
+      alert("Google Drive Link is required for Video Folders");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
     formData.append("folderId", folderId);
+    if (isVideoFolder) {
+      formData.append("driveLink", driveLink);
+    }
     formData.append("image", image);
 
     try {
@@ -184,6 +199,7 @@ export default function AddPortfolio() {
 
       setTitle("");
       setDescription("");
+      setDriveLink("");
       setImage(null);
 
       if (imagePreview) URL.revokeObjectURL(imagePreview);
@@ -254,6 +270,14 @@ export default function AddPortfolio() {
             </div>
 
             <div className="ap-field">
+              <label className="ap-label">Folder Type</label>
+              <select value={folderType} onChange={(e) => setFolderType(e.target.value)}>
+                <option value="image">Image Folder</option>
+                <option value="video">Video Folder</option>
+              </select>
+            </div>
+
+            <div className="ap-field">
               <label className="ap-label">Folder Thumbnail</label>
               <label className="ap-file-label">
                 <FiUploadCloud className="ap-file-icon" />
@@ -283,26 +307,50 @@ export default function AddPortfolio() {
 
         <div className="ap-divider" />
 
-        {/* Description */}
-        <div className="ap-field">
-          <label className="ap-label">Description (optional)</label>
-          <textarea
-            placeholder="Brief description of the project..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
+        {(() => {
+          const selectedFolderObj = folders.find(f => f._id === folderId);
+          const isVideoFolder = selectedFolderObj?.type === "video";
 
-        {/* Portfolio Image */}
-        <div className="ap-field">
-          <label className="ap-label">Project Image / Video</label>
-          <label className="ap-file-label">
-            <FiUploadCloud className="ap-file-icon" />
-            {image ? image.name : "Click to choose an image or video"}
-            <input type="file" accept="image/*,video/*" onChange={handlePortfolioImageChange} />
-          </label>
-          <span className="ap-file-hint">Max file size: 10MB · JPG, PNG, GIF, MP4</span>
-        </div>
+          return (
+            <>
+              {/* Drive Link (if Video Folder) */}
+              {isVideoFolder && (
+                <div className="ap-field">
+                  <label className="ap-label">Google Drive Link</label>
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/..."
+                    value={driveLink}
+                    onChange={(e) => setDriveLink(e.target.value)}
+                  />
+                </div>
+              )}
+
+              {/* Description */}
+              <div className="ap-field">
+                <label className="ap-label">Description (optional)</label>
+                <textarea
+                  placeholder="Brief description of the project..."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+
+              {/* Portfolio Image */}
+              <div className="ap-field">
+                <label className="ap-label">
+                  {isVideoFolder ? "Thumbnail Image" : "Project Image / Video"}
+                </label>
+                <label className="ap-file-label">
+                  <FiUploadCloud className="ap-file-icon" />
+                  {image ? image.name : (isVideoFolder ? "Click to choose thumbnail" : "Click to choose an image or video")}
+                  <input type="file" accept="image/*,video/*" onChange={handlePortfolioImageChange} />
+                </label>
+                <span className="ap-file-hint">Max file size: 10MB · JPG, PNG, GIF, MP4</span>
+              </div>
+            </>
+          );
+        })()}
 
         {imagePreview && (
           <div className="image-preview">

@@ -28,6 +28,19 @@ export default function PortfolioModal({ item, onClose }) {
           <p className="modal-desc">{item.description}</p>
         )}
 
+        {item.driveLink && (
+          <div style={{ textAlign: "center" }}>
+            <a
+              href={item.driveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="watch-video-btn"
+            >
+              ▶ Watch Video
+            </a>
+          </div>
+        )}
+
       </div>
 
     </div>

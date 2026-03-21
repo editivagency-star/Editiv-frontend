@@ -79,3 +79,47 @@
   background:#00ff8f;
   color:#000;
 }
+
+/* Watch Video Button */
+.watch-video-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 45px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 136, 0.02));
+  border: 1px solid rgba(0, 255, 136, 0.5);
+  color: #00ff8f;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), inset 0 0 10px rgba(0, 255, 136, 0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.watch-video-btn:hover {
+  background: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 35px rgba(0, 255, 136, 0.4), inset 0 0 15px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px) scale(1.03);
+  color: #fff;
+  border-color: #00ff8f;
+}
+
+.watch-video-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.watch-video-btn:hover::before {
+  left: 150%;
+}
