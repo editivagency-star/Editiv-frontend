@@ -1,33 +1,45 @@
 .navbar {
   position: fixed;
-  top: 15px; /* Floating gap */
-  left: 3%;
-  width: 94%;
-  border-radius: 50px;
-  height: 80px;
-  padding: 0 4%;
+  top: 0;
+  width: 100%;
+
+  /* ✅ fixed navbar height so it doesn't grow with logo */
+  height: 82px;
+
+  /* ✅ horizontal padding only (no vertical padding) */
+  padding: 0 10%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   z-index: 1000;
 
-  /* Dark pill glass */
-  background: rgba(15, 15, 15, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Base transparent glass */
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 
-  transition: all 0.4s ease;
+  transition: background 0.4s ease, box-shadow 0.4s ease, height 0.35s ease;
 }
 
 /* Strong glass on scroll */
 .navbar-glass {
-  top: 10px;
-  background: rgba(10, 10, 10, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  height: 72px;
+  background: linear-gradient(135deg,
+      rgba(0, 255, 136, 0.08),
+      rgba(0, 0, 0, 0.6));
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(0, 255, 136, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 255, 136, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+
+  /* ✅ slightly shorter on scroll */
+  height: 74px;
 }
 
 /* Logo */
@@ -113,27 +125,23 @@
   color: var(--neon);
 }
 
-/* Mobile Responsive */
+/* Mobile responsive */
 @media (max-width: 860px) {
   .navbar {
-    top: 10px;
-    height: 70px;
+    height: 72px;
     padding: 0 6%;
-    width: 96%;
-    left: 2%;
   }
 
   .navbar-glass {
-    height: 64px;
-    top: 5px;
+    height: 66px;
   }
 
   .nav-logo img {
-    max-height: 50px;
+    max-height: 54px;
   }
 
   .navbar-glass .nav-logo img {
-    max-height: 44px;
+    max-height: 48px;
   }
 
   .mobile-menu-btn {
@@ -156,7 +164,7 @@
     justify-content: center;
     padding: 40px;
     gap: 30px;
-    border-left: 1px solid rgba(255, 94, 0, 0.15);
+    border-left: 1px solid rgba(0, 255, 136, 0.15);
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   }
 
