@@ -2,8 +2,44 @@
   padding: 140px 8%;
   display: flex;
   gap: 110px;
-  /* more breathing room */
   align-items: center;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── LIGHT RAY GLOW EFFECT ── */
+.insta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: instaRaySweep 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes instaRaySweep {
+  0% { left: -150%; }
+  100% { left: 100%; }
+}
+
+.insta-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* LEFT NEON STACKED CARD */
@@ -258,5 +294,26 @@
 
   .insta-title {
     font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .insta-section {
+    padding: 70px 5%;
+    gap: 40px;
+  }
+  .insta-preview {
+    width: 100%;
+    max-width: 320px;
+    height: 340px;
+  }
+  .insta-title {
+    font-size: 28px;
+  }
+  .insta-desc {
+    font-size: 15px;
+  }
+  .insta-hook {
+    font-size: 15px;
   }
 }

@@ -2,6 +2,37 @@
   padding: 100px 90px;
   background: #000;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── LIGHT RAY GLOW EFFECT ── */
+.portfolio-gallery-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: portfolioRaySweep 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes portfolioRaySweep {
+  0% { left: -150%; }
+  100% { left: 100%; }
 }
 
 /* Top labels */
@@ -11,6 +42,8 @@
   letter-spacing: 3px;
   font-size: 13px;
   margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .gallery-title {
@@ -18,6 +51,8 @@
   font-size: 52px;
   margin-bottom: 80px;
   font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .gallery-title span {
@@ -30,6 +65,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 45px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Card */

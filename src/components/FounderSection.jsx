@@ -27,15 +27,28 @@ export default function FounderSection() {
           <h2 className="neon-text" style={{ display: 'inline-block' }}>Parthiv Chakraborty</h2>
           <br /><br />
           <p>
-            As an entrepreneur and content creator, Parthiv has a passion for
-            creating exceptional content that resonates with audiences.
+            As an entrepreneur and visionary content strategist, Parthiv has dedicated his career to mastering the art of high-retention digital media. He understands that modern brand growth isn't just about fleeting views—it's about engineering viral momentum and building highly dedicated loyal communities.
           </p>
 
           <p>
-            With a strong background in digital media and social growth, he leads
-            the Editiv team to deliver results-driven creative services.
+            Having personally developed growth strategies that have amassed millions of views across Instagram and YouTube, Parthiv leads the EditIV team with a uniquely data-driven, creative-first methodology.
           </p>
 
+          <p>
+            His mission is clear: to help ambitious visionaries and businesses unlock exponential growth through elite video editing, dominant social positioning, and relentless creative execution.
+          </p>
+
+          <div className="founder-socials" style={{ display: 'flex', gap: '22px', marginTop: '30px' }}>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', fontSize: '22px', opacity: '0.7', transition: 'all 0.3s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#00ff88'; e.currentTarget.style.opacity = '1'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.opacity = '0.7'; }}>
+              <FaInstagram />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', fontSize: '22px', opacity: '0.7', transition: 'all 0.3s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#00ff88'; e.currentTarget.style.opacity = '1'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.opacity = '0.7'; }}>
+              <FaLinkedinIn />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', fontSize: '22px', opacity: '0.7', transition: 'all 0.3s ease' }} onMouseOver={(e) => { e.currentTarget.style.color = '#00ff88'; e.currentTarget.style.opacity = '1'; }} onMouseOut={(e) => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.opacity = '0.7'; }}>
+              <FaYoutube />
+            </a>
+          </div>
         </div>
 
       </div>

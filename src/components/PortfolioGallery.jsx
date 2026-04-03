@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";   // ✅ added
 import "../styles/portfolioGallery.css";
-
-
+import ParticleBackground from "./ParticleBackground";
 import API from "../config/api";
+
+
+
 
 
 export default function PortfolioGallery() {
@@ -43,6 +45,8 @@ export default function PortfolioGallery() {
 
   return (
     <div className="portfolio-gallery-wrapper">
+      <ParticleBackground />
+
 
       <p className="gallery-small">RECENT WORK</p>
 

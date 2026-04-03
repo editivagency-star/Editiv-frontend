@@ -1,11 +1,45 @@
 .stats-wrapper {
   padding: 120px 8%;
   text-align: center;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── LIGHT RAY GLOW EFFECT ── */
+.stats-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: statsRaySweep 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes statsRaySweep {
+  0% { left: -150%; }
+  100% { left: 100%; }
 }
 
 .stats-wrapper h2 {
   font-size: 42px;
   margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
 }
 
 /* MAIN GLASS BAR */
@@ -15,6 +49,8 @@
   grid-template-columns: repeat(3, 1fr);
   padding: 60px 40px;
   border-radius: 28px;
+  position: relative;
+  z-index: 1;
 
   background: rgba(0, 30, 15, 0.6);
   backdrop-filter: blur(18px);

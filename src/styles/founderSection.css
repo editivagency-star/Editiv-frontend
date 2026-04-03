@@ -1,7 +1,37 @@
 .founder-section {
   padding: 120px 8% 0;
   background: #000;
+  position: relative;
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── LIGHT RAY GLOW EFFECT ── */
+.founder-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: founderRaySweep 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes founderRaySweep {
+  0% { left: -150%; }
+  100% { left: 100%; }
 }
 
 
@@ -11,6 +41,8 @@
   gap: 100px;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 /* IMAGE */
@@ -225,5 +257,24 @@
 
   .social-icons {
     gap: 35px;
+  }
+}
+
+@media(max-width:480px) {
+  .contact-title {
+    font-size: 30px;
+  }
+  .contact-buttons {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  .contact-btn {
+    width: 100%;
+    margin: 0;
+  }
+  .social-icons {
+    gap: 25px;
+    font-size: 24px;
   }
 }

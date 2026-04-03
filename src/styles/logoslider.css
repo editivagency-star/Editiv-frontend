@@ -1,11 +1,47 @@
 /* Section wrapper */
 .logo-wrapper {
+  position: relative;
   padding: 120px 8%;
   text-align: center;
   overflow: hidden;
 }
 
+/* ── LIGHT RAY GLOW EFFECT ── */
+.logo-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: logoRaySweep 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes logoRaySweep {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
 .logo-wrapper h2 {
+  position: relative;
+  z-index: 1;
   font-size: 58px;
   margin-bottom: 70px;
 }
@@ -13,6 +49,8 @@
 
 /* Slider container (no box) */
 .logo-slider {
+  position: relative;
+  z-index: 1;
   width: 100%;
   overflow: hidden;
   /* hides overflowing logos */
@@ -76,5 +114,21 @@
 
   .logo-track img {
     width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-wrapper {
+    padding: 60px 5%;
+  }
+  .logo-wrapper h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  .logo-track {
+    gap: 30px;
+  }
+  .logo-track img {
+    width: 75px;
   }
 }

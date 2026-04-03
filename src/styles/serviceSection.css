@@ -3,6 +3,37 @@
   padding: 120px 8%;
   background: #000;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── LIGHT RAY GLOW EFFECT ── */
+.service-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: secondaryServiceRaySweep 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes secondaryServiceRaySweep {
+  0% { left: -150%; }
+  100% { left: 100%; }
 }
 
 .service-label {
@@ -13,11 +44,15 @@
   text-transform: uppercase;
   margin-bottom: 14px;
   text-shadow: 0 0 14px rgba(0, 255, 160, 0.5);
+  position: relative;
+  z-index: 1;
 }
 
 .service-title {
   color: white;
   font-size: 38px;
+  position: relative;
+  z-index: 1;
   margin-bottom: 70px;
   font-weight: 700;
 }
@@ -86,23 +121,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: rgba(0, 255, 160, 0.1);
-  border: 1px solid rgba(0, 255, 160, 0.25);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--neon, #00ff88);
   margin-bottom: 22px;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .svc-card:hover .svc-icon-wrap {
-  background: rgba(0, 255, 160, 0.18);
+  box-shadow: 0 6px 25px rgba(0, 255, 136, 0.5);
+  transform: scale(1.05);
 }
 
 .svc-icon {
-  font-size: 22px;
-  color: #00ff9c;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 160, 0.5));
+  font-size: 20px;
+  color: #060a08;
 }
 
 /* ===== TAG PILL ===== */

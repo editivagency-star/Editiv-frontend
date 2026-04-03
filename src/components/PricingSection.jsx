@@ -1,4 +1,5 @@
 import "../styles/pricing.css";
+import ParticleBackground from "./ParticleBackground";
 
 const packages = [
   {
@@ -95,6 +96,7 @@ const packages = [
 export default function PricingSection() {
   return (
     <section className="pricing-section" id="pricing">
+      <ParticleBackground />
       <h2 className="pricing-title">
         📦 <span className="neon-text">PACKAGES</span>
       </h2>
