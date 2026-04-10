@@ -7,25 +7,34 @@
   background: #000;
 }
 
-/* ── DIFFERENT BACKGROUND ANIMATION: DATA DOT MATRIX AND AURORA ── */
+/* Background glow removed for cleaner look */
+
+/* ── LIGHT RAY SWEEP (same as services section) ── */
 .results-wrapper::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.15), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.12), transparent 50%),
-    radial-gradient(circle at 60% 20%, rgba(0, 255, 136, 0.08), transparent 40%);
-  filter: blur(40px);
-  z-index: 0;
-  animation: orbDrift 20s ease-in-out infinite alternate;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.03) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(0, 255, 136, 0.03) 60%,
+    transparent 100%
+  );
+  transform: skewX(-45deg);
+  filter: blur(20px);
+  animation: resultsRaySweep 15s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes orbDrift {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(4%, 5%); }
-  100% { transform: scale(1.05) translate(-3%, -2%); }
+@keyframes resultsRaySweep {
+  0%   { left: -150%; }
+  100% { left: 100%; }
 }
 
 .results-wrapper::after {
@@ -65,38 +74,36 @@
   z-index: 1;
 }
 
-/* Glass cards */
+/* Glass cards — same white-shine glassmorphism as service cards */
 .result-card {
   padding: 35px 40px;
   border-radius: 24px;
   text-align: left;
   max-width: 750px;
-  background: linear-gradient(145deg, rgba(10, 25, 18, 0.7) 0%, rgba(0, 5, 2, 0.9) 100%);
+
+  /* High-visibility Glassmorphism with Top Reflection */
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  /* Dimmer sides, sharp bright top border */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
   opacity: 1 !important;
   animation: none !important;
-  transform: none !important;
   filter: none !important;
   visibility: visible !important;
-}
-
-/* Glowing top border accent */
-.result-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.8), transparent);
-  opacity: 0.5;
-  transition: opacity 0.4s ease;
 }
 
 /* Staggered layout */
@@ -175,15 +182,11 @@
 
 .result-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(0, 255, 136, 0.12);
-}
-
-.result-card:hover::before {
-  opacity: 1;
-  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+  border-color: rgba(0, 255, 150, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 255, 150, 0.08);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.17) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.04);
 }
 
 .result-card:hover .logo-box {

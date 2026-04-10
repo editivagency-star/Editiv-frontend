@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import HeroNew from "../components/HeroNew";
 import LogoSlider from "../components/Logoslider";
 import Stats from "../components/Stats";
 import Results from "../components/Results";
@@ -11,7 +11,7 @@ import PortfolioGallery from "../components/PortfolioGallery";
 import ServiceSection from "../components/ServiceSection";
 import Testimonials from "../components/Testimonials";
 import FounderSection from "../components/FounderSection";
-import "../styles/hero.css";
+
 import { FaWhatsapp } from "react-icons/fa";
 import About from "../components/About";
 import Services from "../components/Services";
@@ -23,9 +23,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <section>
-        <Hero />
-      </section>
+      <HeroNew />
 
       <LogoSlider />
 

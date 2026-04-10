@@ -1,0 +1,393 @@
+/* =============================================
+   HERO NEW — Split Layout (Text Left / Video Right)
+   ============================================= */
+
+.hero-new {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── Subtle dot-grid BG ── */
+.hero-new::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 255, 136, 0.10) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+/* ── Inner wrapper ── */
+.hero-new-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  min-height: 100vh;
+}
+
+/* =============================================
+   LEFT — Text content
+   ============================================= */
+
+.hero-new-left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Badge pill */
+.hero-new-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-new-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #43da15;
+  box-shadow: 0 0 8px #43da15;
+  animation: badgeDotBlink 2s ease-in-out infinite;
+}
+
+@keyframes badgeDotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* Heading */
+.hero-new-heading {
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  color: #fff;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease 0.12s, transform 0.7s ease 0.12s;
+}
+
+.hero-new-heading .hn-green {
+  font-weight: 900;
+  background: linear-gradient(
+    90deg,
+    #43da15 0%,
+    #a8ff6a 35%,
+    #ffffff 55%,
+    #a8ff6a 75%,
+    #43da15 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: growthShimmer 3.5s linear infinite;
+}
+
+@keyframes growthShimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 250% center; }
+}
+
+/* CTA buttons */
+.hero-new-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s;
+}
+
+/* Primary – Solid green */
+.hn-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #060a08;
+
+  background: #43da15;
+  box-shadow: 0 4px 20px rgba(67, 218, 21, 0.35);
+
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.hn-btn-primary:hover {
+  background: #38c412;
+  box-shadow: 0 8px 30px rgba(67, 218, 21, 0.5);
+  transform: translateY(-2px);
+}
+
+.hn-btn-primary svg {
+  font-size: 16px;
+  transition: transform 0.25s ease;
+}
+
+.hn-btn-primary:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Secondary – ghost outlined */
+.hn-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.hn-btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.hn-btn-secondary svg {
+  font-size: 14px;
+}
+
+/* =============================================
+   RIGHT — Video
+   ============================================= */
+
+.hero-new-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  margin-right: -9%;
+}
+
+.hero-new-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+}
+
+.hero-new-video-wrap video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =============================================
+   LOADED — trigger animations
+   ============================================= */
+
+.hero-new.hn-loaded .hero-new-badge,
+.hero-new.hn-loaded .hero-new-heading,
+.hero-new.hn-loaded .hero-new-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-new.hn-loaded .hero-new-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =============================================
+   STATS CARDS
+   ============================================= */
+
+.hn-stats-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease 0.38s, transform 0.7s ease 0.38s;
+}
+
+.hn-stats-wrap.hn-loaded-stats {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Each row — 3 equal cards */
+.hn-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Card base */
+.hn-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.10) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.hn-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(67, 218, 21, 0.3);
+}
+
+/* Upper row — big val */
+.hn-stat-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.hn-stat-label {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+/* Lower row — smaller */
+.hn-stat-card--sm {
+  flex-direction: row;
+  gap: 8px;
+  padding: 12px 14px;
+  justify-content: flex-start;
+}
+
+.hn-stat-val--sm {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.4px;
+}
+
+.hn-stat-label--sm {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 900px) {
+  .hero-new-inner {
+    grid-template-columns: 1fr;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-new-left {
+    align-items: center;
+  }
+
+  .hero-new-cta {
+    justify-content: center;
+  }
+
+  .hero-new-right {
+    transform: translateY(30px);
+    margin: 0 auto;
+  }
+
+  .hero-new.hn-loaded .hero-new-right {
+    transform: translateY(0);
+  }
+
+  .hero-new-video-wrap {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hn-stats-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hn-stat-card {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-new-heading {
+    font-size: 34px;
+  }
+
+  .hn-btn-primary,
+  .hn-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-new-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-new-badge {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}

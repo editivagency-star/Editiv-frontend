@@ -110,7 +110,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--neon, #00ff88);
+  background: #43da15;
   margin-bottom: 24px;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }

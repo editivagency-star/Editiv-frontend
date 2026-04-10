@@ -167,7 +167,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--neon);
+  background: #43da15;
   color: #030504;
   padding: 6px 20px;
   border-radius: 999px;
@@ -286,9 +286,9 @@
   text-align: center;
   
   /* Solid Neon Fill */
-  background: var(--neon, #00ff88);
+  background: #43da15;
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 4px 15px rgba(67, 218, 21, 0.3);
 
   color: #060a08;
   padding: 18px;
@@ -300,8 +300,8 @@
 }
 
 .plan-btn:hover {
-  background: #00e676;
-  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+  background: #38c412;
+  box-shadow: 0 6px 20px rgba(67, 218, 21, 0.45);
   transform: translateY(-2px);
 }
 

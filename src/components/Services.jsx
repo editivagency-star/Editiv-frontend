@@ -150,10 +150,10 @@ export default function Services() {
                 </ul>
 
                 <button
-                  className="btn-neon btn-cta"
+                  className="service-book-btn"
                   onClick={() => openWhatsApp(s.title)}
                 >
-                  Book Now <span className="cta-arrow">→</span>
+                  Book Now <span className="service-book-arrow">→</span>
                 </button>
               </TiltCard>
             </ScrollReveal>
