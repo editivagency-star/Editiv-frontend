@@ -42,7 +42,7 @@ export default function Testimonials() {
 
               <img src={item.img} className="client-img" />
 
-              <div className="quote">“</div>
+              <div className="quote">//</div>
 
               <div className="testimonial-text">
                 {item.text}
