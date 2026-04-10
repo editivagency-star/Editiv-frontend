@@ -69,51 +69,37 @@
   position: relative;
   text-align: left;
   padding: 36px 30px 30px;
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
 
-  background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(0, 0, 0, 0.6) 100%);
-  border: 1px solid rgba(0, 255, 160, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* High-visibility Glassmorphism with Top Reflection */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-  box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  /* Dimmer sides, sharp bright top border */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), /* Extra sharp inner top edge */
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   cursor: default;
 }
 
 /* Hover lift */
 .svc-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 255, 160, 0.4);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.65),
-    0 0 30px rgba(0, 255, 160, 0.12),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-/* Subtle corner glow on hover */
-.svc-card::before {
-  content: "";
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 255, 160, 0.15), transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.svc-card:hover::before {
-  opacity: 1;
+  border-color: rgba(0, 255, 150, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 255, 150, 0.08); /* Faint outward neon glow */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.18) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.04);
 }
 
 /* ===== ICON WRAP ===== */
@@ -121,30 +107,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--neon, #00ff88);
-  margin-bottom: 22px;
-  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 24px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .svc-card:hover .svc-icon-wrap {
-  box-shadow: 0 6px 25px rgba(0, 255, 136, 0.5);
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 255, 150, 0.4);
 }
 
 .svc-icon {
-  font-size: 20px;
+  font-size: 24px;
   color: #060a08;
 }
 
 /* ===== TAG PILL ===== */
 .svc-tag {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 24px;
+  right: 24px;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -159,16 +144,18 @@
 /* ===== TEXT ===== */
 .svc-name {
   color: #fff;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 12px;
   line-height: 1.3;
+  letter-spacing: -0.4px;
 }
 
 .svc-desc {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14.5px;
-  line-height: 1.7;
+  color: #a1a1aa; /* Professional cool-grey */
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
 }
 
 /* ===== BOTTOM ACCENT LINE ===== */

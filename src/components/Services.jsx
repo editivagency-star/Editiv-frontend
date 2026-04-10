@@ -137,13 +137,10 @@ export default function Services() {
           return (
             <ScrollReveal key={idx} animation="fade-up" delay={idx * 120}>
               <TiltCard className="service-card">
-                <h3 className="service-name">
-                  {s.title}
-                  <span className="service-icon">
-                    <Icon />
-                  </span>
-                </h3>
-
+                <div className="service-icon">
+                  <Icon />
+                </div>
+                <h3 className="service-name">{s.title}</h3>
                 <p className="service-tagline">{s.tagline}</p>
 
                 <ul className="service-points">

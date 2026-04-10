@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/navbar.css";
-import { FiBriefcase, FiBarChart2, FiDollarSign, FiGrid, FiMail, FiMenu, FiX } from "react-icons/fi";
+import { FiBriefcase, FiBarChart2, FiGrid, FiMail, FiMenu, FiX } from "react-icons/fi";
+import { LuIndianRupee } from "react-icons/lu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ export default function Navbar() {
         <li onClick={() => scrollTo("portfolio")}><FiBriefcase /> Portfolio</li>
         <li onClick={() => scrollTo("results")}><FiBarChart2 /> Results</li>
         <li onClick={() => scrollTo("services")}><FiGrid /> Services</li>
-        <li onClick={() => scrollTo("pricing")}><FiDollarSign /> Pricing</li>
+        <li onClick={() => scrollTo("pricing")}><LuIndianRupee /> Pricing</li>
         <li onClick={() => scrollTo("contact")}><FiMail /> Contact</li>
       </ul>
     </nav>

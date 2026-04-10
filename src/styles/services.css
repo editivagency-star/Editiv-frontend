@@ -75,136 +75,126 @@
 
 /* Card */
 .service-card {
-  --sheen-x: 50%;
-  --sheen-y: 50%;
-
   position: relative;
-  padding: 34px 30px;
-  border-radius: 22px;
+  padding: 40px 30px;
+  border-radius: 24px;
 
-  /* Flex to make cards uniform height */
+  /* Flex alignment for centering content */
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   height: 100%;
 
-  background: linear-gradient(135deg,
-      rgba(0, 255, 150, 0.10),
-      rgba(0, 0, 0, 0.65));
+  /* High-visibility Glassmorphism with Top Reflection */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Dimmer sides, sharp bright top border */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 
-  border: 1px solid rgba(0, 255, 150, 0.20);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.65),
-    inset 0 0 14px rgba(0, 255, 150, 0.06);
-
-  transition: box-shadow 0.35s ease, border-color 0.35s ease;
-  transform-style: preserve-3d;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15), /* Extra sharp inner top edge */
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   overflow: hidden;
 }
 
-/* Dynamic sheen that follows cursor */
-.service-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle at var(--sheen-x) var(--sheen-y),
-      rgba(0, 255, 150, 0.18),
-      transparent 55%);
-  pointer-events: none;
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-}
-
-/* Animated neon border trace on hover */
-.service-card::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(90deg,
-      rgba(0, 255, 136, 0.0),
-      rgba(0, 255, 136, 0.5),
-      rgba(0, 255, 200, 0.5),
-      rgba(0, 255, 136, 0.0));
-  background-size: 300% 100%;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: borderTrace 3s linear infinite;
-}
-
-.service-card:hover::after {
-  opacity: 1;
-}
-
 .service-card:hover {
-  border-color: rgba(0, 255, 150, 0.35);
-  box-shadow:
-    0 28px 85px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(0, 255, 150, 0.2);
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 150, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 255, 150, 0.08); /* Faint outward glow only on hover */
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* Icon (Centered at top) */
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  
+  /* Bright solid fill mimicking reference */
+  background: var(--neon, #00ff88);
+  color: #060a08;
+  font-size: 24px;
+  margin-bottom: 24px;
+  
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 255, 150, 0.4);
 }
 
 /* Typography */
 .service-name {
-  font-size: 26px;
-  font-weight: 900;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #fff;
+  letter-spacing: -0.4px; /* Tighter letter-spacing feels more premium */
 }
 
 .service-tagline {
-  font-size: 15.5px;
-  line-height: 1.7;
-  opacity: 0.88;
-  margin-bottom: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #a1a1aa; /* Professional cool-grey */
+  letter-spacing: 0.2px;
 }
 
 /* Points list */
 .service-points {
   list-style: none;
   padding-left: 0;
-  display: grid;
-  gap: 10px;
-  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  
+  /* Create a perfect vertical line of checkmarks by left-aligning 
+     the internal contents, but centering the entire block. */
+  align-items: flex-start;
+  width: fit-content;
+  margin: 18px auto 28px auto;
+  gap: 12px;
 }
 
 .service-points li {
-  font-size: 15px;
-  opacity: 0.88;
+  font-size: 14px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 12px;
+  color: #d4d4d8;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
 }
 
 .service-points li::before {
   content: "✔";
-  color: var(--neon);
-  text-shadow: 0 0 10px rgba(0, 255, 150, 0.55);
+  color: var(--neon, #00ff88);
+  font-size: 12px;
+  margin-top: 3px; /* Align checkmark exactly with the first line of text */
 }
 
-/* Button (uses your existing .btn-neon base) */
+/* Button */
 .btn-cta {
-  width: fit-content;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-
-  border-radius: 999px;
-  padding: 13px 28px;
-  font-size: 15px;
-  letter-spacing: 0.3px;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  letter-spacing: 0.5px;
 }
 
 .cta-arrow {
@@ -216,52 +206,15 @@
   transform: translateX(6px);
 }
 
-
-
-/* Make CTA button NOT full width */
+/* Base button properties for inside Service Cards */
 .service-card .btn-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
   width: auto;
-  /* ✅ prevents full width */
-  min-width: 160px;
-  /* ✅ consistent size */
+  min-width: 150px;
   max-width: fit-content;
-
-  padding: 12px 26px;
+  padding: 12px 24px;
   border-radius: 999px;
-
-  /* Push button to bottom of flex container */
-  margin-top: auto;
-}
-
-.service-name {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-}
-
-.service-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Solid filler circle */
-  background: var(--neon, #00ff88);
-  /* Dark icon inside */
-  color: #060a08;
-  font-size: 20px;
-
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 50%;
-
-  margin-left: auto;
-
-  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+  margin-top: auto; /* Push to bottom of the flex card */
+  font-size: 14px;
 }
 
 /* Responsive */

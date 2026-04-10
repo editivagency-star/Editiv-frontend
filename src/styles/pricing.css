@@ -111,33 +111,50 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  background: #111214;
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 25px rgba(0, 255, 136, 0.1);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 26px; /* Match large corner radius of reference */
+  
+  /* High-visibility Glassmorphism with Top Reflection */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Dimmer sides, sharp bright top border */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
   overflow: hidden;
   height: 100%;
 }
 
 .pricing-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 255, 136, 0.5);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 50px rgba(0, 255, 136, 0.25);
+  border-color: rgba(0, 255, 150, 0.25);
+  box-shadow: 0 20px 60px rgba(0, 255, 150, 0.08); /* Faint outward neon glow */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.04);
 }
 
 .pricing-card.featured {
-  border-color: rgba(0, 255, 136, 0.3);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 35px rgba(0, 255, 136, 0.18);
+  /* Minimal highlight for featured */
+  border-color: rgba(0, 255, 136, 0.15);
+  border-top-color: rgba(0, 255, 136, 0.35);
 }
 
 .pricing-card.featured:hover {
-  border-color: rgba(0, 255, 136, 0.7);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 70px rgba(0, 255, 136, 0.35);
+  border-color: rgba(0, 255, 150, 0.3);
 }
 
 .card-inner {
-  padding: 34px 30px;
+  padding: 34px 28px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -171,43 +188,45 @@
 }
 
 .plan-title {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  letter-spacing: -0.4px;
 }
 
 .plan-subtitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 14.5px;
+  color: #a1a1aa;
   line-height: 1.6;
-  min-height: 44px;
+  min-height: 48px;
+  letter-spacing: 0.2px;
 }
 
 /* Price */
 .plan-price {
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 800;
   color: #fff;
   margin-bottom: 28px;
   display: flex;
   align-items: baseline;
   gap: 6px;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
 }
 
 .plan-price::after {
   content: "/ per month";
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
+  color: #a1a1aa;
   letter-spacing: 0;
 }
 
 /* Nested box for features */
 .plan-list {
-  background: #17181a;
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02); /* Inner glass rather than solid color */
+  border-radius: 16px;
   padding: 24px;
   margin: 0 0 32px;
   flex: 1;
@@ -215,7 +234,7 @@
   flex-direction: column;
   gap: 16px;
   list-style: none;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .plan-list li {
@@ -224,7 +243,7 @@
   gap: 12px;
   font-size: 14.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: #d4d4d8;
 }
 
 .plan-list li.ok::before {
@@ -235,7 +254,7 @@
   border-radius: 50%;
   background: var(--neon);
   flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8l2.5 2.5 5.5-5.5' stroke='%23000' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8l2.5 2.5 5.5-5.5' stroke='%23060a08' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: 10px;
   background-position: center;
   background-repeat: no-repeat;
