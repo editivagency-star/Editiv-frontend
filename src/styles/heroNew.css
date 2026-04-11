@@ -4,10 +4,10 @@
 
 .hero-new {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   background: #000;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden;
   isolation: isolate;
 }
@@ -32,12 +32,12 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 6%;
+  padding: clamp(92px, 10vw, 128px) 6% clamp(40px, 6vw, 72px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 48px;
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 /* =============================================
@@ -274,7 +274,7 @@
 /* Each row — 3 equal cards */
 .hn-stats-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -374,6 +374,51 @@
 
   .hero-new-video-wrap {
     max-width: 420px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hero-new {
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .hero-new-inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    gap: 32px;
+    padding-top: max(92px, calc(env(safe-area-inset-top) + 72px));
+    padding-bottom: 48px;
+    text-align: center;
+  }
+
+  .hero-new-left {
+    align-items: center;
+  }
+
+  .hero-new-heading {
+    font-size: clamp(32px, 5vw, 52px);
+  }
+
+  .hero-new-cta {
+    justify-content: center;
+  }
+
+  .hero-new-right {
+    justify-content: center;
+    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: min(100%, 420px);
+    transform: translateY(30px);
+  }
+
+  .hero-new.hn-loaded .hero-new-right {
+    transform: translateY(0);
+  }
+
+  .hero-new-video-wrap {
+    max-width: 100%;
   }
 }
 
