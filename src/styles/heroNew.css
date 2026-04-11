@@ -12,19 +12,6 @@
   isolation: isolate;
 }
 
-/* ── Subtle dot-grid BG ── */
-.hero-new::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(0, 255, 136, 0.10) 1px, transparent 1px);
-  background-size: 36px 36px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-
-
 /* ── Inner wrapper ── */
 .hero-new-inner {
   position: relative;

@@ -9,54 +9,6 @@
 
 /* Background glow removed for cleaner look */
 
-/* ── LIGHT RAY SWEEP (same as services section) ── */
-.results-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 255, 136, 0.03) 40%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(0, 255, 136, 0.03) 60%,
-    transparent 100%
-  );
-  transform: skewX(-45deg);
-  filter: blur(20px);
-  animation: resultsRaySweep 15s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@keyframes resultsRaySweep {
-  0%   { left: -150%; }
-  100% { left: 100%; }
-}
-
-.results-wrapper::after {
-  content: "";
-  position: absolute;
-  top: -50%; left: -50%; width: 200%; height: 200%;
-  background-image: radial-gradient(rgba(0, 255, 136, 0.18) 1.5px, transparent 1.5px);
-  background-size: 50px 50px;
-  transform: rotate(15deg);
-  opacity: 0.8;
-  z-index: 0;
-  pointer-events: none;
-  animation: dotMatrixPan 25s linear infinite;
-  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 15%, transparent 60%);
-  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 15%, transparent 60%);
-}
-
-@keyframes dotMatrixPan {
-  from { background-position: 0 0; }
-  to { background-position: -50px 50px; }
-}
-
 .results-wrapper h2 {
   font-size: 42px;
   margin-bottom: 90px;
