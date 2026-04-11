@@ -12,6 +12,13 @@
   isolation: isolate;
 }
 
+.hero-new::before,
+.hero-new::after {
+  content: none;
+  background: none;
+  animation: none;
+}
+
 /* ── Inner wrapper ── */
 .hero-new-inner {
   position: relative;
@@ -368,6 +375,13 @@
   .hero-new {
     min-height: auto;
     align-items: flex-start;
+  }
+
+  .hero-new::before,
+  .hero-new::after {
+    content: none;
+    background: none;
+    animation: none;
   }
 
   .hero-new-inner {
