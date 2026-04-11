@@ -178,7 +178,12 @@
 }
 
 .insta-neon {
-  color: #43da15;
+  background: linear-gradient(135deg, #ffffff, #43da15, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
 }
 
 .insta-desc {
