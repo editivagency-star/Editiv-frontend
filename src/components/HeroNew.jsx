@@ -114,6 +114,33 @@ export default function HeroNew() {
               muted
               playsInline
             />
+
+            {/* Floating tool icons */}
+            <img
+              src="/after-effects-3d-icon-png-download-5588282.webp"
+              alt="After Effects"
+              className="hn-float-icon hn-icon-ae"
+            />
+            <img
+              src="/adobe-illustrator-logo-on-a-transparent-background-free-png.webp"
+              alt="Figma"
+              className="hn-float-icon hn-icon-figma"
+            />
+            <img
+              src="/adobe-premiere-pro-icon-free-png.webp"
+              alt="Premiere Pro"
+              className="hn-float-icon hn-icon-ig"
+            />
+            <img
+              src="/free-meta-3d-icon-png-download-8250233.webp"
+              alt="Meta"
+              className="hn-float-icon hn-icon-meta"
+            />
+            <img
+              src="/photoshop-3d-icon-free-png.webp"
+              alt="Photoshop"
+              className="hn-float-icon hn-icon-ps"
+            />
           </div>
         </div>
 

@@ -17,6 +17,7 @@
 /* Background glow removed for cleaner look */
 
 .results-wrapper h2 {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 42px;
   margin-bottom: 90px;
   position: relative;
