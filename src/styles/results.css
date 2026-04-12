@@ -22,6 +22,20 @@
   margin-bottom: 90px;
   position: relative;
   z-index: 1;
+
+  /* ── Scroll animation ── */
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.results-heading.res-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .results-cards {
@@ -41,14 +55,13 @@
   text-align: left;
   max-width: 750px;
 
-  /* High-visibility Glassmorphism with Top Reflection */
+  /* Glassmorphism */
   background:
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.13) 0%, transparent 60%),
     rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 
-  /* Dimmer sides, sharp bright top border */
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-top: 1px solid rgba(255, 255, 255, 0.25);
 
@@ -59,11 +72,25 @@
 
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-  opacity: 1 !important;
-  animation: none !important;
-  filter: none !important;
-  visibility: visible !important;
+
+  /* ── Scroll animation: hidden by default ── */
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(6px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+/* Revealed state */
+.result-card.res-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 /* Staggered layout */
@@ -96,24 +123,20 @@
   justify-content: center;
   border-radius: 20px;
   flex-shrink: 0;
-  background: rgba(0, 255, 136, 0.06) !important;
+  background: rgba(0, 255, 136, 0.06);
   border: 1px solid rgba(0, 255, 136, 0.4);
   box-shadow:
     0 0 18px rgba(0, 255, 136, 0.25),
     inset 0 0 18px rgba(0, 255, 136, 0.08);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 .logo-box img {
   width: 75%;
   height: 75%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)) !important;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
   transition: transform 0.4s ease;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 /* Text area */

@@ -14,10 +14,11 @@ const upperStats = [
 ];
 
 const lowerStats = [
-  { value: "50+",   label: "Clients" },
-  { value: "3x",    label: "Avg ROAS" },
-  { value: "₹40Lacks+", label: "Ad Spend" },
+  { value: "50+",       label: "Clients" },
+  { value: "3x",        label: "Avg ROAS" },
+  { value: "40Lakhs+",  label: "Ad Spend" },
 ];
+
 
 export default function HeroNew() {
   const [loaded, setLoaded] = useState(false);

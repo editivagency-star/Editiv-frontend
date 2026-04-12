@@ -4,7 +4,7 @@ import "../styles/stats.css";
 const statsData = [
   { label: "Clients", value: 50, suffix: "+" },
   { label: "Average ROAS", value: 3, suffix: "x" },
-  { label: "Ad Spend", value: 4000000, suffix: "" },
+  { label: "Ad Spend", value: 40, suffix: "Lakhs+" },
 ];
 
 export default function Stats() {
