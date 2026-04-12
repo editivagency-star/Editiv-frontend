@@ -26,10 +26,10 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: clamp(92px, 10vw, 128px) 6% clamp(40px, 6vw, 72px);
+  padding: clamp(72px, 8vw, 100px) 6% clamp(40px, 6vw, 72px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: start;
   gap: 48px;
   min-height: 100svh;
 }

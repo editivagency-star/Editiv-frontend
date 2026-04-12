@@ -8,15 +8,15 @@ const SHOWREEL_URL     =
   "https://www.instagram.com/reel/DSrBdItgXBA/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==";
 
 const upperStats = [
-  { value: "+128%", label: "Campaign Lift" },
-  { value: "1,240", label: "Leads Generated" },
-  { value: "300+",  label: "Creative Output" },
+  { value: "+80%", label: "Campaign Lift" },
+  { value: "3,500", label: "Leads Generated" },
+  { value: "200+",  label: "Creative Output" },
 ];
 
 const lowerStats = [
-  { value: "40+",   label: "Clients" },
+  { value: "50+",   label: "Clients" },
   { value: "3x",    label: "Avg ROAS" },
-  { value: "₹2Cr+", label: "Ad Spend" },
+  { value: "₹40Lacks+", label: "Ad Spend" },
 ];
 
 export default function HeroNew() {

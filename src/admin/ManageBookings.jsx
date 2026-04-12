@@ -105,7 +105,7 @@ export default function ManageBookings() {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Date & Time</th>
+              <th>Submitted / Scheduled</th>
               <th>Message</th>
               <th>Status</th>
               <th>Action</th>
@@ -121,7 +121,12 @@ export default function ManageBookings() {
                 <td>{b.name}</td>
                 <td>{b.email}</td>
                 <td>{b.phone}</td>
-                <td>{new Date(b.datetime).toLocaleString()}</td>
+                <td>
+                  {b.datetime
+                    ? new Date(b.datetime).toLocaleString()
+                    : <span style={{ color: '#888', fontSize: '12px' }}>{new Date(b.createdAt).toLocaleString()}</span>
+                  }
+                </td>
                 <td>{b.message}</td>
 
                 <td>
