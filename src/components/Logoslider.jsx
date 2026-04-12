@@ -14,6 +14,13 @@ const logos = [
   "/logos/logo11.png",
   "/logos/logo12.png",
   "/logos/logo13.jpg",
+  "/logos/logo14.png",
+  "/logos/logo15.png",
+  "/logos/logo16.png",
+  "/logos/logo17.png",
+  "/logos/logo18.jpeg",
+  "/logos/logo19.jpeg",
+  "/logos/logo20.webp",
 ];
 
 export default function LogoSlider() {
