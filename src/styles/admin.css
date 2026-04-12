@@ -48,3 +48,56 @@
     font-size: 20px;
   }
 }
+
+/* ===== ADMIN DASHBOARD INSTRUCTIONS ===== */
+.admin-instruction-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.admin-instruction-title {
+  font-size: 24px;
+  color: #43da15;
+  margin-bottom: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.admin-instruction-step {
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.015);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 3px solid #43da15;
+}
+
+.admin-instruction-step:last-child {
+  margin-bottom: 0;
+}
+
+.admin-instruction-step h4 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.admin-instruction-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.admin-instruction-images img {
+  max-width: 100%;
+  max-height: 350px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}

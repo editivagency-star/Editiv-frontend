@@ -4,23 +4,24 @@ import "../styles/results.css";
 const results = [
   {
     brand: "Fisdom",
-    title: "1100% increase in views within 45 days",
-    desc: "Instagram reels grew from 300-400 views to over 3,500 average views in less than 45 days after partnering with us.",
+    title: "6–8× increase in views in 45 days",
+    desc: "Reels grew from 300–400 to around 2,000–2,500 average views in 45 days with consistent posting.",
     logo: "/logos/logo3.png",
   },
   {
     brand: "Formula Guy",
-    title: "50,000 followers & 5M views in 6 months",
-    desc: "Personal brand grew rapidly with consistent content strategy and viral reels created by our team.",
-    logo: "/profiles/p1.jpg",
+    title: "15,000 followers & 1.2M views in 6 months",
+    desc: "Personal brand grew steadily with consistent content and targeted reels strategy.",
+    logo: "/logos/logo8.png",
   },
   {
     brand: "RangDe",
-    title: "800% more virality and 6x growth",
-    desc: "Recreated high-performing reels and achieved over 61,000 views along with strong engagement growth.",
+    title: "5–6x increase in reach and engagement",
+    desc: "Recreated high-performing reels and achieved over 60,000 views with steady engagement growth.",
     logo: "/logos/logo1.png",
   },
 ];
+
 
 export default function Results() {
   const sectionRef = useRef(null);
