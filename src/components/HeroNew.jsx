@@ -14,9 +14,9 @@ const upperStats = [
 ];
 
 const lowerStats = [
-  { value: "50+",       label: "Clients" },
-  { value: "3x",        label: "Avg ROAS" },
-  { value: "40Lakhs+",  label: "Ad Spend" },
+  { value: "50+",         label: "Clients" },
+  { value: "3x",          label: "Avg ROAS" },
+  { value: "₹40 Lakhs+", label: "Ad Spend" },
 ];
 
 

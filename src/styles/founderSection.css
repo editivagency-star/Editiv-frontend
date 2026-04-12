@@ -150,10 +150,29 @@
 /* Title */
 
 .contact-title {
-  color: #fff;
   font-size: 52px;
   font-weight: 700;
   margin-bottom: 45px;
+
+  /* Gradient text animation */
+  background: linear-gradient(
+    90deg,
+    #43da15 0%,
+    #a8ff6a 30%,
+    #ffffff 50%,
+    #a8ff6a 70%,
+    #43da15 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: contactTitleShimmer 3.5s linear infinite;
+}
+
+@keyframes contactTitleShimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 250% center; }
 }
 
 /* Buttons container */
@@ -180,14 +199,15 @@
 /* Neon filled button */
 
 .contact-btn.primary {
-  background: #00ff9c;
+  background: #43da15;
   color: #000;
-  box-shadow: 0 0 25px rgba(0, 255, 160, .9);
+  box-shadow: 0 0 25px rgba(67, 218, 21, 0.7);
 }
 
 .contact-btn.primary:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 50px rgba(0, 255, 160, 1);
+  box-shadow: 0 0 50px rgba(67, 218, 21, 1);
+  background: #38c412;
 }
 
 /* Neon outline button */

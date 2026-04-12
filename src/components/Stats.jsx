@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/stats.css";
 
 const statsData = [
-  { label: "Clients", value: 50, suffix: "+" },
-  { label: "Average ROAS", value: 3, suffix: "x" },
-  { label: "Ad Spend", value: 40, suffix: "Lakhs+" },
+  { label: "Clients",      value: 50, prefix: "",  suffix: "+" },
+  { label: "Average ROAS", value: 3,  prefix: "",  suffix: "x" },
+  { label: "Ad Spend",     value: 40, prefix: "₹", suffix: " Lakhs+" },
 ];
 
 export default function Stats() {
@@ -58,8 +58,9 @@ export default function Stats() {
     if (num >= 1000000) display = (num / 1000000).toFixed(1) + "M+";
     else if (num >= 1000) display = (num / 1000).toFixed(0) + "K+";
     else display = num;
+    const prefix = stat.prefix || "";
     const suffix = num >= stat.value ? stat.suffix : "";
-    return `${display}${suffix}`;
+    return `${prefix}${display}${suffix}`;
   };
 
   return (
