@@ -15,28 +15,21 @@
 
   z-index: 1000;
 
-  /* Base transparent glass */
-  background: rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  /* Solid black — nothing bleeds through on scroll */
+  background: #000;
 
   transition: background 0.4s ease, box-shadow 0.4s ease, height 0.35s ease;
 }
 
-/* Strong glass on scroll */
+/* Solid black on scroll with green accent border */
 .navbar-glass {
-  background: linear-gradient(135deg,
-      rgba(0, 255, 136, 0.08),
-      rgba(0, 0, 0, 0.6));
+  background: #000;
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-bottom: 1px solid rgba(0, 255, 136, 0.25);
+  border-bottom: 1px solid rgba(67, 218, 21, 0.25);
 
   box-shadow:
-    0 10px 30px rgba(0, 255, 136, 0.15),
-    inset 0 0 10px rgba(255, 255, 255, 0.05);
+    0 4px 24px rgba(0, 0, 0, 0.8),
+    0 1px 0 rgba(67, 218, 21, 0.1);
 
   /* ✅ slightly shorter on scroll */
   height: 74px;

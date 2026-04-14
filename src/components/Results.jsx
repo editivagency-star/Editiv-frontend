@@ -18,7 +18,7 @@ const results = [
     brand: "RangDe",
     title: "5–6x increase in reach and engagement",
     desc: "Recreated high-performing reels and achieved over 60,000 views with steady engagement growth.",
-    logo: "/logos/logo1.png",
+    logo: "/logos/logo13.jpg",
   },
 ];
 

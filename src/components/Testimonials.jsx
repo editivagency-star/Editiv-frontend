@@ -16,7 +16,7 @@ export default function Testimonials() {
       role: "Founder, Rang De"
     },
     {
-      img: "/logos/logo14.png",
+      img: "/logos/logo10.png",
       text: "Working with EditIV was a game changer. Their production quality and growth strategies delivered massive results.",
       name: "Shivani Muthanna",
       role: "Digital Content Head, Fisdom"
