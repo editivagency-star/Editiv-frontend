@@ -4,21 +4,21 @@ import "../styles/results.css";
 const results = [
   {
     brand: "Fisdom",
-    title: "6–8× increase in views in 45 days",
-    desc: "Reels grew from 300–400 to around 2,000–2,500 average views in 45 days with consistent posting.",
-    logo: "/logos/logo3.png",
+    title: "Strengthening Brand Value in Just 2–3 Months",
+    desc: "Medicus Group of Institutions partnered with Editiv for their marketing, and within a short span of 2–3 months, we played a key role in enhancing their brand value and overall market presence.",
+    logo: "/logos/logo14.png",
   },
   {
     brand: "Formula Guy",
-    title: "15,000 followers & 1.2M views in 6 months",
-    desc: "Personal brand grew steadily with consistent content and targeted reels strategy.",
-    logo: "/logos/logo8.png",
+    title: "Consistent Growth & Strong Audience Response",
+    desc: "Since partnering with us, Memohack’s coaching institute has seen a steady rise in audience response, driven by consistent content and effective growth strategies.",
+    logo: "/logos/logo17.png",
   },
   {
     brand: "RangDe",
-    title: "5–6x increase in reach and engagement",
-    desc: "Recreated high-performing reels and achieved over 60,000 views with steady engagement growth.",
-    logo: "/logos/logo13.jpg",
+    title: "Driving High-Quality Leads & Business Growth",
+    desc: "Since partnering with us, CCD has experienced a significant increase in high-quality leads, contributing to substantial business growth and improved performance.",
+    logo: "/logos/logo16.png",
   },
 ];
 

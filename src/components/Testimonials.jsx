@@ -5,21 +5,21 @@ export default function Testimonials() {
   const data = [
     {
       img: "/logos/logo16.png",
-      text: "We partnered with EditIV to create a new social media presence. Their strategy and execution were flawless from start to finish.",
-      name: "Varun Ganjoo",
-      role: "Founder, Poker Baazi"
+      text: "We partnered with Editiv to create a new social media presence. Their strategy and execution were flawless from start to finish.",
+      name: "Debasish Datta",
+      role: "Founder"
     },
     {
       img: "/logos/logo18.jpeg",
-      text: "EditIV helped us scale content with incredible creativity and consistency. The engagement results were beyond expectations.",
-      name: "Ramakrishna NK",
-      role: "Founder, Rang De"
+      text: "Editiv helped us scale content with incredible creativity and consistency. The engagement results were beyond expectations.",
+      name: "Diptanil Deb ",
+      role: "Founder"
     },
     {
-      img: "/logos/logo10.png",
-      text: "Working with EditIV was a game changer. Their production quality and growth strategies delivered massive results.",
-      name: "Shivani Muthanna",
-      role: "Digital Content Head, Fisdom"
+      img: "/logos/logo4.png",
+      text: "Working with Editiv was a game changer. Their production quality and growth strategies delivered massive results.",
+      name: "Debabrata Paul",
+      role: "Store Franchise owner"
     }
   ];
 
