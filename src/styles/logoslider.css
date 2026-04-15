@@ -85,6 +85,11 @@
   opacity: 1;
 }
 
+/* Larger logos — logo15, logo16, logo17 */
+.logo-track img.logo-lg {
+  width: 160px;
+}
+
 /* Infinite sliding animation */
 @keyframes slide {
   from {
@@ -115,6 +120,10 @@
   .logo-track img {
     width: 100px;
   }
+
+  .logo-track img.logo-lg {
+    width: 140px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -130,5 +139,9 @@
   }
   .logo-track img {
     width: 75px;
+  }
+
+  .logo-track img.logo-lg {
+    width: 110px;
   }
 }

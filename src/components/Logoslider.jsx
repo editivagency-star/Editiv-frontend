@@ -1,26 +1,26 @@
 import "../styles/logoslider.css";
 
 const logos = [
-  "/logos/logo1.png",
-  "/logos/logo2.jpg",
-  "/logos/logo3.png",
-  "/logos/logo4.png",
-  "/logos/logo5.jpg",
-  "/logos/logo6.jpg",
-  "/logos/logo7.png",
-  "/logos/logo8.png",
-  "/logos/logo9.png",
-  "/logos/logo10.png",
-  "/logos/logo11.png",
-  "/logos/logo12.png",
-  "/logos/logo13.jpg",
-  "/logos/logo14.png",
-  "/logos/logo15.png",
-  "/logos/logo16.png",
-  "/logos/logo17.png",
-  "/logos/logo18.jpeg",
-  "/logos/logo19.jpeg",
-  "/logos/logo20.webp",
+  { src: "/logos/logo1.png" },
+  { src: "/logos/logo2.jpg" },
+  { src: "/logos/logo3.png" },
+  { src: "/logos/logo4.png" },
+  { src: "/logos/logo5.jpg" },
+  { src: "/logos/logo6.jpg" },
+  { src: "/logos/logo7.png" },
+  { src: "/logos/logo8.png" },
+  { src: "/logos/logo9.png" },
+  { src: "/logos/logo10.png" },
+  { src: "/logos/logo11.png" },
+  { src: "/logos/logo12.png" },
+  { src: "/logos/logo13.jpg" },
+  { src: "/logos/logo14.png" },
+  { src: "/logos/logo15.png", large: true },
+  { src: "/logos/logo16.png", large: true },
+  { src: "/logos/logo17.png", large: true },
+  { src: "/logos/logo18.jpeg" },
+  { src: "/logos/logo19.jpeg" },
+  { src: "/logos/logo20.webp" },
 ];
 
 export default function LogoSlider() {
@@ -33,7 +33,12 @@ export default function LogoSlider() {
       <div className="logo-slider">
         <div className="logo-track">
           {[...logos, ...logos].map((logo, i) => (
-            <img key={i} src={logo} alt="brand" />
+            <img
+              key={i}
+              src={logo.src}
+              alt="brand"
+              className={logo.large ? "logo-lg" : ""}
+            />
           ))}
         </div>
       </div>
