@@ -375,9 +375,9 @@
     top: 34%; right: 20%; left: auto; bottom: auto;
     width: 46px; height: 46px;
   }
-  /* Figma — bottom-center, near laptop */
+  /* Ai (Illustrator) — top-center, above head */
   .hn-icon-figma {
-    bottom: 95%; left: 30%; transform: translateX(-50%); right: auto; top: auto;
+    top: 5%; left: 50%; transform: translateX(-50%); right: auto; bottom: auto;
     width: 42px; height: 42px;
   }
 }
@@ -404,9 +404,9 @@
     top: 34%; right: 3%; left: auto; bottom: auto;
     width: 36px; height: 36px;
   }
-  /* Figma — bottom-center */
+  /* Ai (Illustrator) — top-center, above head */
   .hn-icon-figma {
-    bottom: 6%; left: 50%; transform: translateX(-50%); right: auto; top: auto;
+    top: 3%; left: 50%; transform: translateX(-50%); right: auto; bottom: auto;
     width: 34px; height: 34px;
   }
 }
