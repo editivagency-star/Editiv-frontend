@@ -28,16 +28,6 @@ const services = [
     points: ["Content planning", "Creative posting", "Page growth & engagement"],
   },
   {
-    title: "Full Stack Web Development (MERN)",
-    icon: FiMonitor,
-    tagline: "Custom web applications built to scale.",
-    points: [
-      "React Frontend",
-      "Node.js & Express Backend",
-      "MongoDB Database Design",
-    ],
-  },
-  {
     title: "Graphic Design",
     icon: FiPenTool,
     tagline: "Designs that stop scrolling and start conversations.",
@@ -59,7 +49,18 @@ const services = [
     tagline: "From concept to final cut.",
     points: ["Brand commercials", "Product ad films", "Campaign videos"],
   },
+  {
+    title: "Full Stack Web Development (MERN)",
+    icon: FiMonitor,
+    tagline: "Custom web applications built to scale.",
+    points: [
+      "React Frontend",
+      "Node.js & Express Backend",
+      "MongoDB Database Design",
+    ],
+  },
 ];
+
 
 function TiltCard({ children, className }) {
   const cardRef = useRef(null);

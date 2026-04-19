@@ -11,7 +11,7 @@ const results = [
   {
     brand: "Formula Guy",
     title: "Consistent Growth & Strong Audience Response",
-    desc: "Since partnering with us, Memohack’s coaching institute has seen a steady rise in audience response, driven by consistent content and effective growth strategies.",
+    desc: "Since partnering with us, Memohack's coaching institute has seen a steady rise in audience response, driven by consistent content and effective growth strategies.",
     logo: "/logos/logo17.png",
   },
   {
@@ -22,53 +22,85 @@ const results = [
   },
 ];
 
-
 export default function Results() {
-  const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const headingRef = useRef(null);
+  const [headingVisible, setHeadingVisible] = useState(false);
 
+  // One visible-state slot per card
+  const [cardVisible, setCardVisible] = useState(results.map(() => false));
+  const cardRefs = useRef(results.map(() => null));
+
+  // Heading observer
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect(); // fire once
-        }
-      },
-      { threshold: 0.15 }
+    const el = headingRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setHeadingVisible(true); obs.disconnect(); } },
+      { threshold: 0.2 }
     );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+  // Per-card observers
+  useEffect(() => {
+    const observers = cardRefs.current.map((el, idx) => {
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setCardVisible(prev => {
+              const next = [...prev];
+              next[idx] = true;
+              return next;
+            });
+            obs.disconnect();
+          }
+        },
+        { threshold: 0.25 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach(o => o && o.disconnect());
   }, []);
 
   return (
-    <section className="results-wrapper" id="results" ref={sectionRef}>
+    <section className="results-wrapper" id="results">
 
-      <h2 className={`results-heading ${visible ? "res-visible" : ""}`}>
+      <h2
+        ref={headingRef}
+        className={`results-heading ${headingVisible ? "res-visible" : ""}`}
+      >
         Stories of our brands that saw{" "}
         <span className="neon-text">exponential growth</span>
       </h2>
 
       <div className="results-cards">
-        {results.map((item, index) => (
-          <div
-            key={index}
-            className={`result-card glass glow card-${index} ${visible ? "res-visible" : ""}`}
-            style={{ transitionDelay: visible ? `${index * 0.18}s` : "0s" }}
-          >
-            <div className="result-content">
-              <div className="logo-box">
-                <img src={item.logo} alt={item.brand} />
-              </div>
+        {results.map((item, index) => {
+          // Odd index → slide from right, even → slide from left
+          const direction = index % 2 === 0 ? "slide-left" : "slide-right";
+          const isVisible = cardVisible[index];
 
-              <div className="result-text">
-                <h4 className="highlight-result">{item.title}</h4>
-                <p>{item.desc}</p>
+          return (
+            <div
+              key={index}
+              ref={el => (cardRefs.current[index] = el)}
+              className={`result-card glass glow card-${index} ${direction} ${isVisible ? "res-visible" : ""}`}
+            >
+              <div className="result-content">
+                <div className="logo-box">
+                  <img src={item.logo} alt={item.brand} />
+                </div>
+
+                <div className="result-text">
+                  <h4 className="highlight-result">{item.title}</h4>
+                  <p>{item.desc}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

@@ -48,7 +48,7 @@
   z-index: 1;
 }
 
-/* Glass cards — same white-shine glassmorphism as service cards */
+/* ── Base card: no transform until direction class added ── */
 .result-card {
   padding: 35px 40px;
   border-radius: 24px;
@@ -73,23 +73,33 @@
   position: relative;
   overflow: hidden;
 
-  /* ── Scroll animation: hidden by default ── */
+  /* Hidden by default */
   opacity: 0;
-  transform: translateY(50px);
-  filter: blur(6px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.4s ease,
     border-color 0.4s ease,
     background 0.4s ease;
 }
 
-/* Revealed state */
+/* Cards slide in from left (card-0, card-2) */
+.result-card.slide-left {
+  transform: translateX(-100px);
+  filter: blur(6px);
+}
+
+/* Cards slide in from right (card-1) */
+.result-card.slide-right {
+  transform: translateX(100px);
+  filter: blur(6px);
+}
+
+/* Revealed: snap into final aligned position */
 .result-card.res-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
   filter: blur(0);
 }
 
@@ -212,8 +222,13 @@
   .result-card {
     padding: 30px 25px;
     align-self: center !important;
-    /* Remove stagger on mobile */
+    /* Remove stagger on mobile — just fade in */
     width: 100%;
+    transform: translateY(40px) !important;
+  }
+
+  .result-card.res-visible {
+    transform: translateY(0) !important;
   }
 
   .result-content {

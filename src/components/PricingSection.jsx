@@ -15,7 +15,7 @@ const packages = [
           "Hi, I'm interested in Social Media Management (Silver). Please share details.",
         items: [
           { text: "12 Graphics", included: true },
-          { text: "4 Videos", included: true },
+          { text: "5 Videos", included: true },
           { text: "SMO Research", included: false },
           { text: "Content Research", included: true },
           { text: "Meme Marketing", included: false },
