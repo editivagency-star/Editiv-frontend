@@ -103,6 +103,64 @@
   flex-direction: column;
 }
 
+/* ── Scroll animation wrapper (replaces card-wrap for animated cards) ── */
+.pricing-card-wrap-anim {
+  position: relative;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  transition:
+    opacity  0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter   0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pricing-card-wrap-anim.pc-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ── Section title animation ── */
+.price-title-anim {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(10px);
+  transition:
+    opacity  0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter   0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.price-title-anim.pt-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* ── Custom feature card animation ── */
+.cf-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(6px);
+  transition:
+    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    filter   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+
+.cf-anim.cf-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
 /* ================================
    CARD
 ================================ */

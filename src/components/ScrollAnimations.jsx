@@ -2,10 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * useScrollReveal — triggers a CSS class when element enters viewport
- * @param {Object} options
- * @param {string} options.threshold - 0 to 1 intersection threshold
- * @param {string} options.rootMargin - margin around root
- * @returns {[React.Ref, boolean]} ref and isVisible state
  */
 export function useScrollReveal(options = {}) {
   const ref = useRef(null);
@@ -23,8 +19,8 @@ export function useScrollReveal(options = {}) {
         }
       },
       {
-        threshold: options.threshold || 0.15,
-        rootMargin: options.rootMargin || "0px 0px -60px 0px",
+        threshold: options.threshold || 0.12,
+        rootMargin: options.rootMargin || "0px 0px -80px 0px",
       }
     );
 
@@ -37,10 +33,6 @@ export function useScrollReveal(options = {}) {
 
 /**
  * useCountUp — animates a number from 0 to target
- * @param {number} target - target number
- * @param {boolean} start - whether to start counting
- * @param {number} duration - animation duration in ms
- * @returns {number} current animated value
  */
 export function useCountUp(target, start = false, duration = 2000) {
   const [count, setCount] = useState(0);
@@ -53,7 +45,6 @@ export function useCountUp(target, start = false, duration = 2000) {
     const step = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      // easeOutExpo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       setCount(Math.floor(eased * target));
       if (progress < 1) raf = requestAnimationFrame(step);
@@ -82,7 +73,7 @@ export default function ScrollReveal({
     <Tag
       ref={ref}
       className={`scroll-reveal ${animation} ${isVisible ? "revealed" : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={isVisible ? { transitionDelay: `${delay}ms` } : {}}
     >
       {children}
     </Tag>

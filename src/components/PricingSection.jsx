@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import "../styles/pricing.css";
-import { FiZap, FiVideo, FiImage, FiLayout, FiSliders } from "react-icons/fi";
+import { FiZap, FiVideo, FiImage, FiSliders } from "react-icons/fi";
 
 const packages = [
   {
@@ -93,11 +94,68 @@ const packages = [
   },
 ];
 
+/* ── Hook: observe one element, fire once ── */
+function useReveal(threshold = 0.18) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+
+  return [ref, visible];
+}
+
+/* ── Animated card wrapper ── */
+function AnimatedCard({ children, delay = 0, className = "" }) {
+  const [ref, visible] = useReveal(0.15);
+  return (
+    <div
+      ref={ref}
+      className={`pricing-card-wrap-anim ${visible ? "pc-visible" : ""} ${className}`}
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/* ── Animated custom feature card ── */
+function AnimatedFeature({ children, delay = 0 }) {
+  const [ref, visible] = useReveal(0.1);
+  return (
+    <div
+      ref={ref}
+      className={`custom-feature-item cf-anim ${visible ? "cf-visible" : ""}`}
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function PricingSection() {
+  const [titleRef, titleVisible] = useReveal(0.2);
+
   return (
     <section className="pricing-section" id="pricing">
 
-      <h2 className="pricing-title">
+      <h2
+        ref={titleRef}
+        className={`pricing-title price-title-anim ${titleVisible ? "pt-visible" : ""}`}
+      >
         📦 <span className="neon-text">PACKAGES</span>
       </h2>
 
@@ -108,19 +166,35 @@ export default function PricingSection() {
 
           <div className={`pricing-grid ${group.gridClass}`}>
             {group.plans.map((plan, i) => (
-              <div key={i} className={`pricing-card-wrap ${plan.isDiamond ? "diamond-wrap" : ""}`}>
-                {plan.badge && <div className={`pricing-badge ${plan.isDiamond ? "diamond-badge" : ""}`}>{plan.badge}</div>}
+              <AnimatedCard
+                key={i}
+                delay={i * 150}
+                className={plan.isDiamond ? "diamond-wrap" : ""}
+              >
+                {plan.badge && (
+                  <div className={`pricing-badge ${plan.isDiamond ? "diamond-badge" : ""}`}>
+                    {plan.badge}
+                  </div>
+                )}
 
-                <div className={`pricing-card ${plan.badge ? "featured" : ""} ${plan.isDiamond ? "diamond-card" : `${plan.title.toLowerCase()}-card`}`}>
+                <div
+                  className={`pricing-card ${plan.badge ? "featured" : ""} ${
+                    plan.isDiamond ? "diamond-card" : `${plan.title.toLowerCase()}-card`
+                  }`}
+                >
                   <div className="card-inner">
                     <div className="plan-top">
-                      <h4 className={`plan-title ${plan.title.toLowerCase()}-title`}>{plan.title}</h4>
-                      {plan.subtitle ? (
+                      <h4 className={`plan-title ${plan.title.toLowerCase()}-title`}>
+                        {plan.title}
+                      </h4>
+                      {plan.subtitle && (
                         <p className="plan-subtitle">{plan.subtitle}</p>
-                      ) : null}
+                      )}
                     </div>
 
-                    <div className={`plan-price ${plan.isDiamond ? "diamond-price" : ""}`}>{plan.price}</div>
+                    <div className={`plan-price ${plan.isDiamond ? "diamond-price" : ""}`}>
+                      {plan.price}
+                    </div>
 
                     <ul className="plan-list">
                       {plan.items.map((item, idx) => (
@@ -142,7 +216,7 @@ export default function PricingSection() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -156,21 +230,21 @@ export default function PricingSection() {
         </p>
 
         <div className="custom-features">
-          <div className="custom-feature-item">
+          <AnimatedFeature delay={0}>
             <FiVideo className="cf-icon" />
             <span>Custom Video Packages</span>
             <p>Reels, brand films &amp; promo videos tailored to your campaign goals.</p>
-          </div>
-          <div className="custom-feature-item">
+          </AnimatedFeature>
+          <AnimatedFeature delay={150}>
             <FiImage className="cf-icon" />
             <span>Bespoke Graphic Design</span>
             <p>Creatives crafted around your brand identity — colours, tone &amp; style.</p>
-          </div>
-          <div className="custom-feature-item">
+          </AnimatedFeature>
+          <AnimatedFeature delay={300}>
             <FiSliders className="cf-icon" />
             <span>Flexible Deliverables</span>
             <p>Choose exactly what you need — mix &amp; match at your convenience.</p>
-          </div>
+          </AnimatedFeature>
         </div>
       </div>
 

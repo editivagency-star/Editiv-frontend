@@ -142,6 +142,7 @@ p {
 /* Variants */
 .scroll-reveal.fade-up {
   transform: translateY(50px);
+  filter: blur(8px);
 }
 
 .scroll-reveal.fade-down {
