@@ -1,5 +1,5 @@
 import "../styles/pricing.css";
-
+import { FiZap, FiVideo, FiImage, FiLayout, FiSliders } from "react-icons/fi";
 
 const packages = [
   {
@@ -148,10 +148,32 @@ export default function PricingSection() {
         </div>
       ))}
 
-      <p className="custom-note">
-        👉 <span className="neon-text">Custom plans available</span> for brands
-        that want more.
-      </p>
+      {/* Custom Plans Note + Feature Points */}
+      <div className="custom-plans-block">
+        <p className="custom-note">
+          <FiZap className="custom-note-icon" />
+          <span className="neon-text">Custom plans available</span> for brands that want more.
+        </p>
+
+        <div className="custom-features">
+          <div className="custom-feature-item">
+            <FiVideo className="cf-icon" />
+            <span>Custom Video Packages</span>
+            <p>Reels, brand films &amp; promo videos tailored to your campaign goals.</p>
+          </div>
+          <div className="custom-feature-item">
+            <FiImage className="cf-icon" />
+            <span>Bespoke Graphic Design</span>
+            <p>Creatives crafted around your brand identity — colours, tone &amp; style.</p>
+          </div>
+          <div className="custom-feature-item">
+            <FiSliders className="cf-icon" />
+            <span>Flexible Deliverables</span>
+            <p>Choose exactly what you need — mix &amp; match at your convenience.</p>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 }

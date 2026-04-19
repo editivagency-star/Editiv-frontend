@@ -220,7 +220,7 @@ export default function FounderSection() {
           </div>
 
           <p className="footer-copy">
-            EditIV © {new Date().getFullYear()}. All Rights Reserved.
+            Editiv © {new Date().getFullYear()}. All Rights Reserved.
           </p>
 
         </div>
