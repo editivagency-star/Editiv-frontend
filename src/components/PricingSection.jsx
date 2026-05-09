@@ -11,7 +11,7 @@ const packages = [
       {
         title: "Silver",
         subtitle: "Great for getting started",
-        price: "₹9,000",
+        price: "₹8,999",
         whatsappMessage:
           "Hi, I'm interested in Social Media Management (Silver). Please share details.",
         items: [
@@ -26,12 +26,12 @@ const packages = [
       {
         title: "Gold",
         subtitle: "For growing brands",
-        price: "₹18,000",
+        price: "₹17,999",
         badge: "Best Value",
         whatsappMessage:
           "Hi, I'm interested in Social Media Management (Gold). Please share details.",
         items: [
-          { text: "15 Graphics", included: true },
+          { text: "20 Graphics", included: true },
           { text: "8 Videos", included: true },
           { text: "SMO Research", included: false },
           { text: "Content Research", included: true },
@@ -42,13 +42,13 @@ const packages = [
       {
         title: "Diamond",
         subtitle: "The complete growth engine",
-        price: "₹30,000",
+        price: "₹29,999",
         badge: "Premium",
         isDiamond: true,
         whatsappMessage:
           "Hi, I'm interested in Social Media Management (Diamond). Please share details.",
         items: [
-          { text: "20 Graphics", included: true },
+          { text: "30 Graphics", included: true },
           { text: "12 Videos", included: true },
           { text: "SMO Research", included: true },
           { text: "Content Research", included: true },
@@ -66,7 +66,7 @@ const packages = [
       {
         title: "Silver",
         subtitle: "Perfect for testing the market",
-        price: "₹6,000 + Ad Budget",
+        price: "₹5,999 + Ad Budget",
         whatsappMessage:
           "Hi, I'm interested in the Marketing Campaign Package (Silver). Please share details.",
         items: [
@@ -79,7 +79,7 @@ const packages = [
       {
         title: "Gold",
         subtitle: "Built for faster growth",
-        price: "₹12,000 + Ad Budget",
+        price: "₹11,999 + Ad Budget",
         badge: "Most Popular",
         whatsappMessage:
           "Hi, I'm interested in the Marketing Campaign Package (Gold). Please share details.",

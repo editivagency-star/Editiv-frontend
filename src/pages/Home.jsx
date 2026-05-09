@@ -11,6 +11,7 @@ import PortfolioGallery from "../components/PortfolioGallery";
 import ServiceSection from "../components/ServiceSection";
 import Testimonials from "../components/Testimonials";
 import FounderSection from "../components/FounderSection";
+import AdBanner from "../components/AdBanner";
 
 import { FaWhatsapp } from "react-icons/fa";
 import About from "../components/About";
@@ -26,6 +27,10 @@ export default function Home() {
       <HeroNew />
 
       <LogoSlider />
+
+      <hr className="section-divider" />
+
+      <AdBanner />
 
       <hr className="section-divider" />
 
