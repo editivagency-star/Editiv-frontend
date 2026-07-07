@@ -820,3 +820,150 @@
 .mi-page input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE OVERRIDES
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Page header & actions */
+  .mi-page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .mi-page-header .mi-new-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Filters panel */
+  .mi-filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .mi-filters input,
+  .mi-filters select {
+    width: 100%;
+  }
+
+  /* Form Layout */
+  .mi-form-card {
+    padding: 20px 16px;
+  }
+
+  /* Line Items Table to Card transformation */
+  .mi-items-table, 
+  .mi-items-table thead, 
+  .mi-items-table tbody, 
+  .mi-items-table th, 
+  .mi-items-table td, 
+  .mi-items-table tr {
+    display: block;
+    width: 100%;
+  }
+  
+  .mi-items-table thead {
+    display: none;
+  }
+  
+  .mi-item-row {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  .mi-item-row td {
+    padding: 6px 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    border: none !important;
+  }
+
+  .mi-item-row td::before {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  
+  .mi-item-row td:nth-child(1)::before { content: "Qty"; }
+  .mi-item-row td:nth-child(2)::before { content: "Description"; }
+  .mi-item-row td:nth-child(3)::before { content: "Duration"; }
+  .mi-item-row td:nth-child(4)::before { content: "Unit Price (₹)"; }
+  .mi-item-row td:nth-child(5)::before { content: "Subtotal"; }
+  
+  .mi-item-row td:nth-child(5) {
+    font-weight: 600;
+    color: var(--neon);
+    font-size: 15px;
+  }
+  
+  .mi-item-row td:nth-child(6) {
+    align-items: flex-end;
+    margin-top: 10px;
+    border-top: 1px solid var(--border-subtle) !important;
+    padding-top: 12px !important;
+  }
+
+  .mi-item-row .delete-btn {
+    width: auto;
+    padding: 8px 16px;
+  }
+
+  /* Totals block and Actions button wrapping */
+  .mi-totals-box {
+    max-width: 100%;
+  }
+
+  .mi-form-actions {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .mi-form-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Preview view responsiveness */
+  .mi-preview-header-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .mi-preview-header-bar div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mi-preview-header-bar button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mi-preview-outer-wrap {
+    padding: 12px !important;
+  }
+
+  .invoice-print-container {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 15px 10px !important;
+    box-shadow: none !important;
+  }
+}
