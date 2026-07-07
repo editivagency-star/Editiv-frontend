@@ -596,9 +596,13 @@ export default function ManageInvoices() {
                       <td>
                         <input
                           type="number"
-                          value={item.qty}
+                          value={item.qty === 0 ? "" : item.qty}
+                          placeholder="0"
                           min="1"
-                          onChange={(e) => handleItemChange(index, "qty", parseInt(e.target.value) || 1)}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            handleItemChange(index, "qty", val === "" ? 0 : parseInt(val) || 0);
+                          }}
                           required
                         />
                       </td>
