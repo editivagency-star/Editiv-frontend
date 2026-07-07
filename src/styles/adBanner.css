@@ -32,3 +32,11 @@
   height: auto;
   object-fit: cover;
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — AD BANNER
+   ============================================= */
+
+[data-theme="light"] .ad-banner-wrap {
+  background: var(--section-grad-b);
+}

@@ -171,3 +171,30 @@
     font-size: 14px;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — STATS
+   ============================================= */
+
+[data-theme="light"] .stats-wrapper {
+  background: var(--section-grad-b);
+}
+
+[data-theme="light"] .stats-wrapper h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .stats-bar {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .stat-box:not(:last-child)::after {
+  background: linear-gradient(transparent, rgba(67, 218, 21, 0.2), transparent);
+}
+
+[data-theme="light"] .stat-label {
+  color: rgba(0, 0, 0, 0.7);
+}

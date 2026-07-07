@@ -14,14 +14,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: logoRaySweep 10s ease-in-out infinite alternate;
@@ -145,3 +138,15 @@
     width: 110px;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — LOGO SLIDER
+   ============================================= */
+
+[data-theme="light"] .logo-wrapper {
+  background: var(--section-grad-a);
+}
+
+[data-theme="light"] .logo-wrapper h2 {
+  color: var(--text-primary);
+}

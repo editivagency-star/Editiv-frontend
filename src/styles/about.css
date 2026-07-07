@@ -13,14 +13,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: aboutRaySweep 12s ease-in-out infinite alternate;
@@ -189,4 +182,47 @@
   .stat-card {
     padding: 20px 18px;
   }
+}
+
+/* =============================================
+   LIGHT MODE OVERRIDES — ABOUT
+   ============================================= */
+
+[data-theme="light"] .about-section {
+  background: var(--section-grad-b);
+}
+
+[data-theme="light"] .about-section-label {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .about-heading {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .about-subheading {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .about-para {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .stat-number {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .about-image img {
+  border: 1px solid rgba(67, 218, 21, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }

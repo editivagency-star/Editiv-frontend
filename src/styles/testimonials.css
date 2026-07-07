@@ -15,14 +15,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: testimonialRaySweep 15s ease-in-out infinite alternate;
@@ -193,4 +186,45 @@
     width: 60px;
     height: 60px;
   }
+}
+
+/* =============================================
+   LIGHT MODE OVERRIDES — TESTIMONIALS
+   ============================================= */
+
+[data-theme="light"] .testimonials-section {
+  background: var(--section-grad-a);
+}
+
+[data-theme="light"] .testimonials-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .testimonial-card-wrap:hover .testimonial-card {
+  background: var(--card-bg-hover);
+  border-color: rgba(67, 218, 21, 0.4);
+  box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="light"] .testimonial-text {
+  color: #333;
+}
+
+[data-theme="light"] .testimonial-card p {
+  color: #666;
+}
+
+[data-theme="light"] .divider {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .testimonial-text::-webkit-scrollbar-thumb {
+  background: rgba(67, 218, 21, 0.3);
 }

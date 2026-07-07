@@ -250,3 +250,41 @@
     font-size: 15px;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — RESULTS
+   ============================================= */
+
+[data-theme="light"] .results-wrapper {
+  background: var(--section-grad-a);
+}
+
+[data-theme="light"] .results-wrapper h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .result-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .result-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(67, 218, 21, 0.4);
+  box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="light"] .highlight-result {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .result-text p {
+  color: rgba(10, 25, 10, 0.75);
+}
+
+[data-theme="light"] .result-card:hover .highlight-result {
+  color: #2db50a;
+  text-shadow: 0 0 20px rgba(67, 218, 21, 0.3);
+}

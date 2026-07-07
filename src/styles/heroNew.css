@@ -678,3 +678,50 @@
   .hn-stat-val--sm { font-size: 15px; }
   .hn-stat-label--sm { font-size: 9px; margin-top: 3px; text-align: center; }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — HERO
+   ============================================= */
+
+[data-theme="light"] .hero-new {
+  background: var(--section-grad-a);
+}
+
+[data-theme="light"] .hero-new-badge {
+  border-color: rgba(67, 218, 21, 0.35);
+  background: rgba(67, 218, 21, 0.08);
+  color: rgba(10, 30, 10, 0.75);
+}
+
+[data-theme="light"] .hero-new-heading {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .hn-btn-secondary {
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #0d1a0d;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .hn-btn-secondary:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .hn-stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(12px);
+}
+
+[data-theme="light"] .hn-stat-val,
+[data-theme="light"] .hn-stat-val--sm {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .hn-stat-label,
+[data-theme="light"] .hn-stat-label--sm {
+  color: rgba(0, 0, 0, 0.5);
+}

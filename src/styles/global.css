@@ -12,15 +12,23 @@
 
 html {
   scroll-behavior: smooth;
-  background: #050b08;
+  background: var(--bg-primary, #050b08);
+  transition: background var(--theme-transition, 0.4s ease), color var(--theme-transition, 0.4s ease);
 }
 
 body {
-  background: #050b08;
-  color: white;
+  background: var(--bg-primary, #050b08);
+  color: var(--text-primary, white);
   overflow-x: hidden;
   min-height: 100vh;
+  transition: background var(--theme-transition, 0.4s ease), color var(--theme-transition, 0.4s ease);
 }
+
+/*
+[data-theme="light"] body {
+  background: #ffffff;
+}
+*/
 
 /* =====================
    THEME VARIABLES
@@ -36,7 +44,92 @@ body {
   --glass-border: rgba(0, 255, 136, 0.25);
 
   --blur: 14px;
+
+  /* Semantic tokens — dark mode defaults */
+  --bg-primary: #050b08;
+  --bg-secondary: #000;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-neon: rgba(0, 255, 136, 0.25);
+
+  --ray-sweep-bg: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(0, 255, 136, 0.03) 40%, 
+    rgba(255, 255, 255, 0.12) 50%, 
+    rgba(0, 255, 136, 0.03) 60%, 
+    transparent 100%
+  );
+
+  /* Transition speed for theme switch */
+  --theme-transition: 0.4s ease;
 }
+
+/* =====================
+   LIGHT MODE VARIABLES
+===================== */
+
+/*
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --text-primary: #0d1a0d;
+  --text-secondary: rgba(10, 25, 10, 0.78);
+  --text-muted: rgba(0, 0, 0, 0.45);
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-neon: rgba(67, 218, 21, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(67, 218, 21, 0.22);
+
+  --section-grad-a: radial-gradient(ellipse 110% 65% at 50% 0%,
+      rgba(134, 239, 172, 0.32) 0%,
+      rgba(220, 252, 231, 0.18) 42%,
+      #ffffff 72%);
+
+  --section-grad-b: radial-gradient(ellipse 110% 65% at 50% 100%,
+      rgba(134, 239, 172, 0.28) 0%,
+      rgba(220, 252, 231, 0.14) 42%,
+      #ffffff 70%);
+
+  --section-grad-c: radial-gradient(ellipse 90% 55% at 10% 50%,
+      rgba(134, 239, 172, 0.22) 0%,
+      rgba(220, 252, 231, 0.12) 45%,
+      #ffffff 72%);
+
+  --card-bg: radial-gradient(
+      ellipse 85% 48% at 50% 0%,
+      rgba(134, 239, 172, 0.38) 0%,
+      rgba(200, 248, 220, 0.18) 50%,
+      transparent 75%
+    ),
+    #ffffff;
+  --card-bg-hover: radial-gradient(
+      ellipse 85% 52% at 50% 0%,
+      rgba(67, 218, 21, 0.28) 0%,
+      rgba(134, 239, 172, 0.14) 50%,
+      transparent 75%
+    ),
+    #ffffff;
+  --card-border: rgba(134, 239, 172, 0.4);
+  --card-top-border: rgba(134, 239, 172, 0.75);
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 12px 40px rgba(67, 218, 21, 0.16), 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  --ray-sweep-bg: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(134, 239, 172, 0.05) 35%, 
+    rgba(67, 218, 21, 0.12) 50%, 
+    rgba(134, 239, 172, 0.05) 65%, 
+    transparent 100%
+  );
+}
+*/
+
 
 /* =====================
    SECTION SPACING (USE THIS)
@@ -107,8 +200,39 @@ h2 {
 p {
   font-size: 17px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-secondary);
+  transition: color var(--theme-transition);
 }
+
+/*
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .section-divider {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(134, 239, 172, 0.3) 30%,
+    rgba(134, 239, 172, 0.55) 50%,
+    rgba(134, 239, 172, 0.3) 70%,
+    transparent 100%);
+}
+
+[data-theme="light"] .glass {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .whatsapp-float {
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+}
+*/
 
 .neon-text {
   background: linear-gradient(135deg, #ffffff, #43da15, #ffffff);
@@ -119,6 +243,17 @@ p {
   animation: shimmer 4s ease-in-out infinite;
   font-weight: 700;
 }
+
+/*
+[data-theme="light"] .neon-text {
+  background: linear-gradient(135deg, #1a7a0a, #43da15, #1a7a0a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+*/
 
 /* =====================
    SCROLL REVEAL ANIMATIONS

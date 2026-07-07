@@ -19,14 +19,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: pricingRaySweep 15s ease-in-out infinite alternate;
@@ -574,3 +567,76 @@
     padding: 16px;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — PRICING
+   ============================================= */
+
+[data-theme="light"] .pricing-section {
+  background: var(--section-grad-b);
+}
+
+[data-theme="light"] .pricing-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .package-heading {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .package-note {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .pricing-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .pricing-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(67, 218, 21, 0.4);
+  box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="light"] .plan-title {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .plan-subtitle {
+  color: #555;
+}
+
+[data-theme="light"] .plan-price {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .plan-price::after {
+  color: #777;
+}
+
+[data-theme="light"] .plan-list {
+  background: rgba(240, 253, 244, 0.7);
+  border: 1px solid rgba(134, 239, 172, 0.25);
+}
+
+[data-theme="light"] .plan-list li {
+  color: #333;
+}
+
+[data-theme="light"] .custom-feature-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .custom-feature-item > span {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .custom-feature-item > p {
+  color: rgba(0, 0, 0, 0.55);
+}

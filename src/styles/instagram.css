@@ -17,14 +17,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: instaRaySweep 15s ease-in-out infinite alternate;
@@ -288,3 +281,32 @@
     font-size: 15px;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — INSTAGRAM SECTION
+   ============================================= */
+
+[data-theme="light"] .insta-section {
+  background: var(--section-grad-c);
+}
+
+[data-theme="light"] .insta-kicker {
+  color: #2db50a;
+}
+
+[data-theme="light"] .insta-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .insta-desc {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .insta-layer.front {
+  background: #e8f5e8;
+  border-color: rgba(67, 218, 21, 0.2);
+}
+
+[data-theme="light"] .insta-hook .dot {
+  color: rgba(0, 0, 0, 0.35);
+}

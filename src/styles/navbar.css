@@ -1,37 +1,27 @@
+/* =====================
+   NAVBAR BASE
+===================== */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-
-  /* ✅ fixed navbar height so it doesn't grow with logo */
   height: 82px;
-
-  /* ✅ horizontal padding only (no vertical padding) */
   padding: 0 10%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   z-index: 1000;
-
-  /* Solid black — nothing bleeds through on scroll */
   background: #000;
-
   transition: background 0.4s ease, box-shadow 0.4s ease, height 0.35s ease;
 }
 
 /* Solid black on scroll with green accent border */
 .navbar-glass {
   background: #000;
-
   border-bottom: 1px solid rgba(67, 218, 21, 0.25);
-
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.8),
     0 1px 0 rgba(67, 218, 21, 0.1);
-
-  /* ✅ slightly shorter on scroll */
   height: 74px;
 }
 
@@ -43,22 +33,16 @@
 }
 
 .nav-logo img {
-  /* ✅ big logo but will never increase navbar height */
   max-height: 130px;
   width: auto;
   object-fit: contain;
-
-
-
   transition: transform 0.25s ease, filter 0.25s ease, max-height 0.35s ease;
 }
 
 .nav-logo:hover img {
   transform: scale(1.05);
-
 }
 
-/* ✅ a bit smaller on scroll */
 .navbar-glass .nav-logo img {
   max-height: 96px;
 }
@@ -77,7 +61,6 @@
   display: flex;
   align-items: center;
   gap: 6px;
-
   transition: 0.3s ease;
   position: relative;
 }
@@ -110,7 +93,6 @@
   color: white;
   cursor: pointer;
   z-index: 1001;
-  /* Keep above mobile menu */
   transition: color 0.3s ease;
 }
 
@@ -118,7 +100,126 @@
   color: var(--neon);
 }
 
-/* Mobile responsive */
+/* Right-side group: toggle + hamburger */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   THEME TOGGLE SWITCH
+   ============================================= */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 54px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(67, 218, 21, 0.45);
+  box-shadow: 0 0 10px rgba(67, 218, 21, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.theme-toggle--light .theme-toggle__track {
+  background: rgba(255, 200, 40, 0.12);
+  border-color: rgba(255, 180, 0, 0.6);
+  box-shadow: 0 0 12px rgba(255, 200, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #43da15, #38c412);
+  box-shadow: 0 2px 8px rgba(67, 218, 21, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.theme-toggle--light .theme-toggle__thumb {
+  transform: translateX(26px);
+  background: linear-gradient(135deg, #ffcc00, #ffaa00);
+  box-shadow: 0 2px 10px rgba(255, 180, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle__icon {
+  font-size: 13px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.theme-toggle:hover .theme-toggle__track {
+  border-color: rgba(67, 218, 21, 0.7);
+  box-shadow: 0 0 16px rgba(67, 218, 21, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.theme-toggle--light:hover .theme-toggle__track {
+  border-color: rgba(255, 180, 0, 0.9);
+  box-shadow: 0 0 16px rgba(255, 200, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   LIGHT MODE NAVBAR OVERRIDES
+   ============================================= */
+
+[data-theme="light"] .navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 253, 244, 0.82) 0%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(134, 239, 172, 0.35);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .navbar-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 252, 231, 0.88) 0%,
+    rgba(240, 253, 244, 0.92) 100%
+  );
+  border-bottom: 1px solid rgba(67, 218, 21, 0.4);
+  box-shadow: 0 4px 24px rgba(67, 218, 21, 0.08);
+}
+
+[data-theme="light"] .nav-links li {
+  color: var(--text-primary);
+}
+
+/* Mobile menu button color matching text color in light mode */
+[data-theme="light"] .mobile-menu-btn {
+  color: var(--text-primary);
+}
+
+/* =============================================
+   MOBILE RESPONSIVE
+   ============================================= */
+
 @media (max-width: 860px) {
   .navbar {
     height: 72px;
@@ -146,7 +247,6 @@
     position: fixed;
     top: 0;
     right: -100%;
-    /* Hidden by default */
     width: 280px;
     height: 100vh;
     background: rgba(5, 11, 8, 0.95);
@@ -161,7 +261,6 @@
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   }
 
-  /* Active state slides in from right */
   .nav-links.nav-active {
     right: 0;
     box-shadow: -10px 0 50px rgba(0, 0, 0, 0.6);
@@ -174,6 +273,23 @@
 
   .nav-links li::after {
     bottom: -8px;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(240, 252, 240, 0.98);
+    border-left: 1px solid rgba(67, 218, 21, 0.2);
+  }
+
+  [data-theme="light"] .nav-links li {
+    color: #111;
+  }
+
+  [data-theme="light"] .nav-links.nav-active {
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-right {
+    gap: 8px;
   }
 }
 
@@ -229,5 +345,22 @@
 
   .nav-links li::after {
     bottom: -8px;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(240, 252, 240, 0.98);
+    border-left: 1px solid rgba(67, 218, 21, 0.2);
+  }
+
+  [data-theme="light"] .nav-links li {
+    color: #111;
+  }
+
+  [data-theme="light"] .nav-links.nav-active {
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-right {
+    gap: 8px;
   }
 }

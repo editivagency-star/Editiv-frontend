@@ -16,14 +16,7 @@
   left: -150%;
   width: 200%;
   height: 100%;
-  background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(0, 255, 136, 0.03) 40%, 
-    rgba(255, 255, 255, 0.12) 50%, 
-    rgba(0, 255, 136, 0.03) 60%, 
-    transparent 100%
-  );
+  background: var(--ray-sweep-bg);
   transform: skewX(-45deg);
   filter: blur(20px);
   animation: secondaryServiceRaySweep 15s ease-in-out infinite alternate;
@@ -192,3 +185,42 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =============================================
+   LIGHT MODE OVERRIDES — SERVICE SECTION
+   ============================================= */
+
+[data-theme="light"] .service-section {
+  background: var(--section-grad-b);
+}
+
+[data-theme="light"] .service-title {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .svc-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 1px solid var(--card-top-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .svc-card:hover {
+  background: var(--card-bg-hover);
+  border-color: rgba(67, 218, 21, 0.4);
+  box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="light"] .svc-name {
+  color: #0d1a0d;
+}
+
+[data-theme="light"] .svc-desc {
+  color: #555;
+}
+
+[data-theme="light"] .svc-tag {
+  color: #2db50a;
+  background: rgba(67, 218, 21, 0.08);
+  border-color: rgba(67, 218, 21, 0.25);
+}

@@ -1,0 +1,822 @@
+/* ==========================================================================
+   ADMIN PANEL STYLING (MANAGE INVOICES)
+   ========================================================================== */
+
+.mi-page {
+  padding: 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.mi-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.admin-page-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.admin-page-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.mi-new-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--neon);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mi-new-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--neon-soft);
+}
+
+.mi-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.mi-search-bar {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.mi-search-bar input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.mi-search-bar input:focus {
+  outline: none;
+  border-color: var(--neon);
+}
+
+.mi-filter-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+}
+
+.mi-filter-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mi-filter-btn.active {
+  background: var(--neon);
+  color: #000;
+  font-weight: 600;
+}
+
+.mi-table-wrap {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.mi-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mi-table th {
+  padding: 16px 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mi-table td {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mi-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mi-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.mi-badge.invoice {
+  background: rgba(0, 180, 255, 0.15);
+  color: #00b4ff;
+}
+
+.mi-badge.quote {
+  background: rgba(67, 218, 21, 0.15);
+  color: var(--neon);
+}
+
+.mi-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mi-action-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mi-action-btn:hover {
+  background: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.mi-action-btn.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.mi-empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   FORM CONTAINER & EDIT STYLING
+   ========================================================================== */
+
+.mi-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.mi-form-section {
+  margin-bottom: 32px;
+}
+
+.mi-form-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mi-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mi-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .mi-grid-2, .mi-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mi-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mi-field-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mi-field-group input,
+.mi-field-group select,
+.mi-field-group textarea {
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.mi-field-group input:focus,
+.mi-field-group select:focus,
+.mi-field-group textarea:focus {
+  outline: none;
+  border-color: var(--neon);
+}
+
+.mi-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.mi-items-table th {
+  padding: 10px;
+  text-align: left;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.mi-items-table td {
+  padding: 8px;
+}
+
+.mi-item-row input,
+.mi-item-row select {
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+}
+
+.mi-item-row select option,
+.mi-field-group select option {
+  background-color: #0a110c; /* Deep dark background matching the admin shell */
+  color: #ffffff;
+}
+
+.mi-add-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--neon);
+  border: 1px dashed var(--neon-soft);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  justify-content: center;
+}
+
+.mi-add-item-btn:hover {
+  background: rgba(67, 218, 21, 0.05);
+  border-color: var(--neon);
+}
+
+.mi-totals-box {
+  margin-top: 24px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+  margin-left: auto;
+  max-width: 400px;
+}
+
+.mi-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.mi-total-row:last-child {
+  margin-bottom: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--neon);
+}
+
+.mi-tax-input {
+  width: 120px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.mi-tax-input:focus {
+  outline: none;
+  border-color: var(--neon);
+  box-shadow: 0 0 8px var(--neon-soft);
+}
+
+.mi-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.mi-btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mi-btn-secondary:hover {
+  background: var(--border-subtle);
+}
+
+/* Collapsible sender toggle */
+.mi-sender-toggle {
+  background: transparent;
+  border: none;
+  color: var(--neon);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   HIGH FIDELITY PREVIEW / PRINT SCREEN STYLING
+   ========================================================================== */
+
+.mi-preview-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px 12px 0 0;
+  padding: 16px 24px;
+  border-bottom: none;
+}
+
+.mi-preview-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* A4 Page styling for preview container on screen */
+.mi-preview-outer-wrap {
+  background: #111; /* Dark outer background to make A4 stand out */
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+/* Forces exact A4 aspect ratio on screen */
+.invoice-print-container {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm 20mm;
+  margin: 0 auto;
+  background-color: #ffffff;
+  background-image: url('/Quotation bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #1e1e1e;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ipc-inner {
+  position: relative;
+  z-index: 2; /* Sit above the watermark */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Header section */
+.ipc-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.ipc-header-title {
+  max-width: 60%;
+  margin-top: 60px; /* Aligns title text vertically with logo graphics */
+}
+
+.ipc-header-title h1 {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 850;
+  line-height: 1.05;
+  color: #1f2937;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.ipc-title-green {
+  display: block;
+  color: #43da15; /* Brand green */
+}
+
+.ipc-title-dark {
+  display: block;
+  color: #1f2937; /* Dark gray */
+}
+
+.ipc-header-meta {
+  text-align: right;
+}
+
+.ipc-logo {
+  width: 180px;        /* Adjust this to make the logo larger or smaller */
+  height: auto;        /* Ensures the container wraps tightly without empty vertical space */
+  margin-bottom: 4px;  /* Small gap before the invoice number starts */
+  object-fit: contain;
+}
+
+.ipc-meta-item {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.ipc-meta-item strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+.ipc-divider {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 4px 0;
+  width: 100%;
+}
+
+/* Solid headers: Receiver / Sender */
+.ipc-section-bar {
+  background: #43da15;
+  color: #ffffff;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.ipc-section-bar:first-of-type {
+  margin-top: 4px;
+}
+
+.ipc-address-block {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.ipc-address-block strong {
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Items Table */
+.ipc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.ipc-table th {
+  background: #43da15;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+.ipc-table th:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  text-align: center;
+}
+
+.ipc-table th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  text-align: right;
+}
+
+.ipc-table th:nth-child(2) {
+  text-align: left;
+}
+
+.ipc-table th:nth-child(3) {
+  text-align: left;
+}
+
+.ipc-table td {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f3fdf4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.ipc-table td:first-child {
+  text-align: center;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ipc-table td:nth-child(2) {
+  font-weight: 500;
+  color: #111827;
+}
+
+.ipc-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ipc-table tr:last-child td {
+  border-bottom: 1px solid #9ca3af;
+}
+
+/* Calculations block */
+.ipc-calc-block {
+  margin-left: auto;
+  width: 250px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.ipc-calc-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  color: #4b5563;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.ipc-calc-row strong {
+  color: #111827;
+}
+
+.ipc-calc-row.grand-total {
+  margin-top: 6px;
+  background: #43da15;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.ipc-calc-row.grand-total span,
+.ipc-calc-row.grand-total strong {
+  color: #ffffff;
+}
+
+/* Notes section */
+.ipc-notes-box {
+  background: #f3fdf4;
+  border: 1px solid rgba(67, 218, 21, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.ipc-notes-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #15803d;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ipc-notes-list {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.ipc-notes-list li {
+  font-size: 11px;
+  color: #374151;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.ipc-notes-list li::before {
+  content: "•";
+  color: #43da15;
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.ipc-notes-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   PRINT MEDIA STYLING (HIDES ALL CONTROL AND RND PANELS)
+   ========================================================================== */
+
+@media print {
+  /* Set page details to match A4 exactly */
+  @page {
+    size: A4 portrait;
+    margin: 0; /* Let container control margins */
+  }
+
+  /* Hide everything in layout except the print container */
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide layout components completely */
+  .sidebar,
+  .sb-mobile-bar,
+  .sb-overlay,
+  .mi-page-header,
+  .mi-filters,
+  .mi-table-wrap,
+  .mi-form-card,
+  .mi-preview-header-bar,
+  .mi-preview-outer-wrap button,
+  .whatsapp-float {
+    display: none !important;
+  }
+
+  /* Force print outer container and page wrappers to fill page and remove margins/decorations */
+  .admin-container,
+  .admin-content,
+  .mi-page,
+  .mi-preview-outer-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    overflow: visible !important;
+    display: block !important;
+    border: none !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .invoice-print-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    padding: 5mm 15mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    background-color: #ffffff !important;
+    background-image: url('/Quotation bg.png') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* Background color overrides for print compatibility */
+  .ipc-section-bar,
+  .ipc-table th,
+  .ipc-calc-row.grand-total {
+    background-color: #43da15 !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ipc-notes-box {
+    background-color: #f3fdf4 !important;
+    border-color: rgba(67, 218, 21, 0.2) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ipc-table td {
+    background-color: #f3fdf4 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Prevent split layout items across page boundaries */
+  .ipc-receiver-wrap,
+  .ipc-sender-wrap,
+  .ipc-notes-box {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* Hide number input spinners (up/down arrows) */
+.mi-page input::-webkit-outer-spin-button,
+.mi-page input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mi-page input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -9,6 +9,9 @@ import {
   FiLogOut,
   FiMenu,
   FiX,
+  FiUsers,
+  FiFolder,
+  FiFileText,
 } from "react-icons/fi";
 
 const navItems = [
@@ -16,6 +19,9 @@ const navItems = [
   { to: "/admin/add-portfolio", icon: FiPlusCircle, label: "Add Portfolio" },
   { to: "/admin/folders", icon: FiFolderPlus, label: "Manage Portfolio" },
   { to: "/admin/bookings", icon: FiCalendar, label: "Bookings" },
+  { to: "/admin/clients", icon: FiUsers, label: "Clients" },
+  { to: "/admin/projects", icon: FiFolder, label: "Projects" },
+  { to: "/admin/invoices", icon: FiFileText, label: "Invoices" },
 ];
 
 export default function Sidebar() {
