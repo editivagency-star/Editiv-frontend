@@ -29,6 +29,23 @@ The advertising budget is included in the quotation and must be paid in advance 
 
 const emptyItem = { qty: 1, description: "", duration: "1 month", price: 0, subtotal: 0 };
 
+const splitServiceType = (serviceType = "Social Media Marketing") => {
+  const service = serviceType || "Social Media Marketing";
+  if (service.toLowerCase() === "freelance") {
+    return {
+      part1: "FREELANCE",
+      part2: "SERVICES"
+    };
+  }
+  const words = service.toUpperCase().split(" ");
+  if (words.length <= 1) {
+    return { part1: "", part2: words[0] || "" };
+  }
+  const lastWord = words[words.length - 1];
+  const otherWords = words.slice(0, -1).join(" ");
+  return { part1: otherWords + " ", part2: lastWord };
+};
+
 export default function ManageInvoices() {
   const adminToken = localStorage.getItem("adminToken");
   const headers = { Authorization: `Bearer ${adminToken}` };
@@ -46,6 +63,7 @@ export default function ManageInvoices() {
   const [form, setForm] = useState({
     invoiceNumber: "",
     type: "quote",
+    serviceType: "Social Media Marketing",
     date: "",
     client: "", // ID
     clientName: "",
@@ -122,6 +140,7 @@ export default function ManageInvoices() {
     setForm({
       invoiceNumber: generateRandomNo(),
       type: "quote",
+      serviceType: "Social Media Marketing",
       date: formatDateForInput(new Date()),
       client: "",
       clientName: "",
@@ -145,6 +164,7 @@ export default function ManageInvoices() {
       _id: inv._id,
       invoiceNumber: inv.invoiceNumber,
       type: inv.type,
+      serviceType: inv.serviceType || "Social Media Marketing",
       date: formatDateForInput(inv.date),
       client: inv.client?._id || inv.client || "",
       clientName: inv.clientName,
@@ -343,6 +363,7 @@ export default function ManageInvoices() {
                   <th>Type</th>
                   <th>Date</th>
                   <th>Number</th>
+                  <th>Service</th>
                   <th>Client</th>
                   <th>Total</th>
                   <th>Actions</th>
@@ -352,14 +373,14 @@ export default function ManageInvoices() {
                 {loading ? (
                   [1, 2, 3].map((i) => (
                     <tr key={i} className="mc-skel-row">
-                      {[1, 2, 3, 4, 5, 6].map((j) => (
+                      {[1, 2, 3, 4, 5, 6, 7].map((j) => (
                         <td key={j}><div className="mc-skel" /></td>
                       ))}
                     </tr>
                   ))
                 ) : filteredInvoices.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="mi-empty">No invoices or quotations found.</td>
+                    <td colSpan={7} className="mi-empty">No invoices or quotations found.</td>
                   </tr>
                 ) : (
                   filteredInvoices.map((inv) => (
@@ -371,6 +392,7 @@ export default function ManageInvoices() {
                       </td>
                       <td>{formatDisplayDate(inv.date)}</td>
                       <td style={{ fontWeight: 600 }}>{inv.invoiceNumber}</td>
+                      <td style={{ fontSize: "13px", color: "var(--text-secondary)" }}>{inv.serviceType || "Social Media Marketing"}</td>
                       <td>{inv.clientName}</td>
                       <td style={{ fontWeight: 700 }}>₹ {(inv.grandTotal || 0).toLocaleString()}</td>
                       <td>
@@ -473,7 +495,7 @@ export default function ManageInvoices() {
             {/* Bill Details */}
             <div className="mi-form-section">
               <div className="mi-form-section-title">Bill Specifications</div>
-              <div className="mi-grid-3">
+              <div className="mi-grid-2">
                 <div className="mi-field-group">
                   <label>Document Type *</label>
                   <select
@@ -512,6 +534,21 @@ export default function ManageInvoices() {
                     onChange={(e) => updateFormFields({ date: e.target.value })}
                     required
                   />
+                </div>
+                <div className="mi-field-group">
+                  <label>Service Type *</label>
+                  <select
+                    value={form.serviceType || "Social Media Marketing"}
+                    onChange={(e) => updateFormFields({ serviceType: e.target.value })}
+                  >
+                    <option value="Social Media Marketing">Social Media Marketing</option>
+                    <option value="Social Media Management">Social Media Management</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Ad Film">Ad Film</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Web Design & Development">Web Design & Development</option>
+                    <option value="Event Captures">Event Captures</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -751,8 +788,8 @@ export default function ManageInvoices() {
                 <div className="ipc-header-row">
                   <div className="ipc-header-title">
                     <h1>
-                      SOCIAL MEDIA
-                      <span className="ipc-title-green">MARKETING</span>
+                      {splitServiceType(selectedInvoice.serviceType).part1}
+                      <span className="ipc-title-green">{splitServiceType(selectedInvoice.serviceType).part2}</span>
                       <span className="ipc-title-dark">{selectedInvoice.type === "invoice" ? "INVOICE" : "PRICE QUOTE"}</span>
                     </h1>
                   </div>
